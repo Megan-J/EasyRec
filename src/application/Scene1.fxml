@@ -17,7 +17,7 @@
             </Label>
             <Button layoutX="176.0" layoutY="86.0" mnemonicParsing="false" onAction="#switchToCreateRec" text="Create Recommendation" />
             <Button layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToLogin" text="Logout" />
-            <Button contentDisplay="CENTER" layoutX="391.0" layoutY="19.0" mnemonicParsing="false" text="Edit Profile" />
+            <Button contentDisplay="CENTER" layoutX="391.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToProfile" text="Edit Profile" />
          </children>
       </AnchorPane>
    </children>
