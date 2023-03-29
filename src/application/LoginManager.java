@@ -35,7 +35,7 @@ public class LoginManager {
         Scanner scanner = new Scanner(new File("password.txt"));
         String line = scanner.nextLine();
         
-        if(line.equals("password") && PasswordField.getText().equals("password"))
+        if(line.equals("p") && PasswordField.getText().equals("p"))
         {
     		Parent root = FXMLLoader.load(getClass().getResource("ChangePassword.fxml"));
     		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
