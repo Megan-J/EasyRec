@@ -18,7 +18,7 @@ public class SampleController {
 	
 	public void switchToScene1(ActionEvent event) throws IOException {
 
-		Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("gui/Scene1.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -27,7 +27,7 @@ public class SampleController {
 	
 	public void switchToCreateRec(ActionEvent event) throws IOException{
 
-		Parent root = FXMLLoader.load(getClass().getResource("CreateRecommendation.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("gui/CreateRecommendation.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

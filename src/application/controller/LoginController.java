@@ -1,4 +1,4 @@
-package application;
+package application.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +13,11 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.Scanner;
 import java.io.File;
+import application.model.LoginModel;
 
 
-public class LoginManager {
+
+public class LoginController {
 
     @FXML
     private PasswordField PasswordField;
@@ -27,7 +29,35 @@ public class LoginManager {
 	private Stage stage;
 	private Scene scene;
 	
+	public LoginModel loginModel = new LoginModel();
+	
 
+	/*@FXML
+    public void Login(ActionEvent event) throws IOException{
+        
+		String inputtedPassword = PasswordField.getText();
+		
+		try {
+			if(loginModel.doesMatch(inputtedPassword)) {
+				Parent root = FXMLLoader.load(getClass().getResource("gui/ChangePassword.fxml"));
+	    		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	    		scene = new Scene(root);
+	    		stage.setScene(scene);
+	    		stage.show();
+			}
+			else {
+				incorrectLabel.setOpacity(1);
+			}
+		}
+		
+		catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+	
+    }*/
+	
+	
     @FXML
     public void Login(ActionEvent event) throws IOException{
         
@@ -37,7 +67,7 @@ public class LoginManager {
         
         if(line.equals("p") && PasswordField.getText().equals("p"))
         {
-    		Parent root = FXMLLoader.load(getClass().getResource("ChangePassword.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("gui/ChangePassword.fxml"));
     		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     		scene = new Scene(root);
     		stage.setScene(scene);
@@ -46,7 +76,7 @@ public class LoginManager {
         
         else if(PasswordField.getText().equals(line))
     	{
-    		Parent root = FXMLLoader.load(getClass().getResource("Scene1.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("gui/Scene1.fxml"));
     		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     		scene = new Scene(root);
     		stage.setScene(scene);
