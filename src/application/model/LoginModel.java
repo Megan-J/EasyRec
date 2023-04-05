@@ -7,7 +7,7 @@ public class LoginModel {
 	Connection conn;
 	
 	public LoginModel() {
-		conn = SQLiteConnection.ConnectDb();
+		conn = SQLiteConnection.Connect();
 		if(conn == null) {
 			System.exit(1);
 		}
@@ -23,28 +23,25 @@ public class LoginModel {
 		}
 	}
 	
-	public boolean doesMatch(String password) throws SQLException {
+	public boolean defaultMatch(String password) throws SQLException {
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 		
-		String query = "SELECT defaultPassword";
+		String query = "SELECT * FROM user WHERE password = ?";
 		
 		try {
 			preparedStatement = conn.prepareStatement(query);
+			preparedStatement.setString(1, password);
+			
 			resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
-				String dbPassword = resultSet.getString("defaultPassword");
-				if(dbPassword.equals(password)) {
-					return true;
-				}
-				else {
-					return false;
-				}
+				return true;
 			}
 			else {
 				return false;
 			}
+		
 		}
 		catch(Exception e) {
 			return false;

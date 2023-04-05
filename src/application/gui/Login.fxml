@@ -27,7 +27,7 @@
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font></PasswordField>
-            <Button defaultButton="true" layoutX="230.0" layoutY="327.0" mnemonicParsing="false" onAction="#Login" text="Sign In">
+            <Button fx:id="loginBtn" defaultButton="true" layoutX="230.0" layoutY="327.0" mnemonicParsing="false" onAction="#Login" text="Sign In">
                <font>
                   <Font name="Avenir Roman" size="14.0" />
                </font></Button>

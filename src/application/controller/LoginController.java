@@ -6,14 +6,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-import java.util.Scanner;
-import java.io.File;
+//import java.util.Scanner;
+//import java.io.File;
 import application.model.LoginModel;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ResourceBundle;
+
+import application.SQLiteConnection;
 
 
 
@@ -25,6 +35,9 @@ public class LoginController {
     @FXML
     private Label incorrectLabel;
     
+    @FXML
+    private Button loginBtn;
+    
 
 	private Stage stage;
 	private Scene scene;
@@ -32,13 +45,17 @@ public class LoginController {
 	public LoginModel loginModel = new LoginModel();
 	
 
-	/*@FXML
+	public void loginBtnClicked(ActionEvent event) throws Exception {
+		//checkDBCred();
+	}
+	
+	@FXML
     public void Login(ActionEvent event) throws IOException{
         
 		String inputtedPassword = PasswordField.getText();
 		
 		try {
-			if(loginModel.doesMatch(inputtedPassword)) {
+			if(loginModel.defaultMatch(inputtedPassword)) {
 				Parent root = FXMLLoader.load(getClass().getResource("gui/ChangePassword.fxml"));
 	    		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	    		scene = new Scene(root);
@@ -55,10 +72,10 @@ public class LoginController {
 			
 		}
 	
-    }*/
+    }
 	
 	
-    @FXML
+    /*@FXML
     public void Login(ActionEvent event) throws IOException{
         
         
@@ -86,7 +103,7 @@ public class LoginController {
         {
         	incorrectLabel.setOpacity(1);
         }
-    }
+    }*/
 
 
 }
