@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="application.SampleController">
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
@@ -17,6 +16,7 @@
                </font>
             </Label>
             <Button layoutX="176.0" layoutY="86.0" mnemonicParsing="false" onAction="#switchToCreateRec" text="Create Recommendation" />
+            <Button fx:id="logoutButton" layoutX="224.0" layoutY="138.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
          </children>
       </AnchorPane>
    </children>
