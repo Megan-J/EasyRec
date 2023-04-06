@@ -46,13 +46,13 @@ public class LoginController {
 	
 
 	public void loginBtnClicked(ActionEvent event) throws Exception {
-		//checkDBCred();
+		checkDBCred();
 	}
 	
 	@FXML
-    public void Login(ActionEvent event) throws IOException{
+    public void checkDBCred() throws IOException{
         
-		String inputtedPassword = PasswordField.getText();
+		/*String inputtedPassword = PasswordField.getText();
 		
 		try {
 			if(loginModel.defaultMatch(inputtedPassword)) {
@@ -70,7 +70,9 @@ public class LoginController {
 		catch (SQLException e) {
 			e.printStackTrace();
 			
-		}
+		}*/
+		
+		System.out.println("I work");
 	
     }
 	
