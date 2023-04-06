@@ -1,4 +1,4 @@
-package application;
+package application.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,7 @@ import java.io.FileWriter;
 import java.io.File;
 
 
-public class ChangePasswordManager {
+public class ChangePasswordController {
 	
 	@FXML
 	private PasswordField newField;
@@ -42,7 +42,7 @@ public class ChangePasswordManager {
             writer.write(confirmField.getText());
             writer.close();
 	        
-			Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("gui/Login.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);
