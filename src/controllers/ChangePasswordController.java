@@ -42,7 +42,7 @@ public class ChangePasswordController {
             writer.write(confirmField.getText());
             writer.close();
 	        
-			Parent root = FXMLLoader.load(getClass().getResource("gui/Login.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
 			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			scene = new Scene(root);
 			stage.setScene(scene);

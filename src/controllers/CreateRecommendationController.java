@@ -82,7 +82,7 @@ public class CreateRecommendationController implements Initializable{
     @FXML
     void switchToScene1(ActionEvent event) throws IOException{
     	
-		Parent root = FXMLLoader.load(getClass().getResource("gui/Scene1.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Scene1.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);

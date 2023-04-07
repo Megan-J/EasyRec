@@ -79,14 +79,15 @@ public class LoginController {
 	
     @FXML
     public void Login(ActionEvent event) throws IOException{
+        String FilePath = "src/resources/password.txt";
+        File file = new File(FilePath);
         
-        
-        Scanner scanner = new Scanner(new File("password.txt"));
+        Scanner scanner = new Scanner(file);
         String line = scanner.nextLine();
         
         if(line.equals("p") && PasswordField.getText().equals("p"))
         {
-    		Parent root = FXMLLoader.load(getClass().getResource("gui/ChangePassword.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/ChangePassword.fxml"));
     		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     		scene = new Scene(root);
     		stage.setScene(scene);
@@ -95,7 +96,7 @@ public class LoginController {
         
         else if(PasswordField.getText().equals(line))
     	{
-    		Parent root = FXMLLoader.load(getClass().getResource("gui/Scene1.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Scene1.fxml"));
     		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     		scene = new Scene(root);
     		stage.setScene(scene);
@@ -105,7 +106,6 @@ public class LoginController {
         {
         	incorrectLabel.setOpacity(1);
         }
+        scanner.close();
     }
-
-
 }
