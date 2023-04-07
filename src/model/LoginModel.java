@@ -1,6 +1,7 @@
-package application.model;
+package model;
 import java.sql.*;
-import application.SQLiteConnection;
+
+import dao.SQLiteConnection;
 
 public class LoginModel {
 	

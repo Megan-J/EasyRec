@@ -1,4 +1,4 @@
-package application;
+package controllers;
 
 import javafx.fxml.FXML;
 
@@ -10,11 +10,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import model.LoginModel;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-//import java.io.File;
-import application.model.LoginModel;
 /*
 import java.sql.Connection;
 import java.sql.PreparedStatement;
