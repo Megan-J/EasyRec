@@ -32,13 +32,13 @@ import java.io.File;
 public class LoginController {
 
     @FXML
-    private PasswordField PasswordField;
+    protected PasswordField PasswordField;
     
     @FXML
-    private Label incorrectLabel;
+    protected Label incorrectLabel;
     
     @FXML
-    private Button loginBtn;
+    protected Button loginBtn;
     
 
 	private Stage stage;

@@ -36,6 +36,11 @@
                   <Font name="Avenir Heavy" size="21.0" />
                </font>
             </Label>
+            <Label fx:id="incorrectLabel" alignment="CENTER" layoutX="141.0" layoutY="229.0" opacity="0.0" prefHeight="43.0" prefWidth="230.0" text="Incorrect password, try again" textAlignment="CENTER" textFill="#d05050">
+               <font>
+                  <Font name="Avenir Heavy" size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

@@ -31,7 +31,7 @@ public class ChangePasswordController {
 	
 	public void confirmLogin(ActionEvent event) throws IOException{
 		if(confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
-			File f = new File("password.txt");
+			File f = new File("src/resources/password.txt");
 			
 			FileWriter writer = new FileWriter(f, false);
             writer.write("");

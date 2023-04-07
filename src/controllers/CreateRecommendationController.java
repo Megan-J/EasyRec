@@ -39,43 +39,43 @@ public class CreateRecommendationController implements Initializable{
 
 
     @FXML
-    private Button submit;
+    protected Button submit;
 
     @FXML
-    private TextField firstName;
+    protected TextField firstName;
 
     @FXML
-    private TextField lastName;
+    protected TextField lastName;
 
     @FXML
-    private DatePicker date;
+    protected DatePicker date;
 
     @FXML
-    private ChoiceBox<String> gender;
+    protected ChoiceBox<String> gender;
 
     @FXML
-    private TextField targetSchool;
+    protected TextField targetSchool;
 
     @FXML
-    private ChoiceBox<String> program;
+    protected ChoiceBox<String> program;
 
     @FXML
-    private ChoiceBox<String> firstSemester;
+    protected ChoiceBox<String> firstSemester;
 
     @FXML
-    private TextField firstSemesterYear;
+    protected TextField firstSemesterYear;
     
     @FXML
-    private CheckComboBox<String> addCourses;
+    protected CheckComboBox<String> addCourses;
 
     @FXML
-    private TextField addCourseYears;
+    protected TextField addCourseYears;
 
     @FXML
-    private CheckComboBox<String> perCharsBox;
+    protected CheckComboBox<String> perCharsBox;
 
     @FXML
-    private CheckComboBox<String> acaChars;
+    protected CheckComboBox<String> acaChars;
     
      
     
