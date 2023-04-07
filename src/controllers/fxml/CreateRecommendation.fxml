@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.CheckComboBox?>
 
@@ -14,36 +15,73 @@
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5bec6" height="394.0" layoutX="53.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
             <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#switchToScene1" text="Exit To Home" />
-            <Label layoutX="92.0" layoutY="30.0" text="Create Recommendation">
+            <Label layoutX="84.0" layoutY="14.0" stylesheets="@../../application.css" text="Create Recommendation">
                <font>
-                  <Font size="30.0" />
+                  <Font name="Avenir Heavy" size="30.0" />
                </font>
             </Label>
             <Button fx:id="submit" layoutX="434.0" layoutY="461.0" mnemonicParsing="false" onAction="#submitRecommendation" text="Submit" />
-            <TextField fx:id="firstName" layoutX="58.0" layoutY="111.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="lastName" layoutX="287.0" layoutY="111.0" prefHeight="25.0" prefWidth="174.0" />
-            <DatePicker fx:id="date" layoutX="287.0" layoutY="170.0" />
-            <ChoiceBox fx:id="gender" layoutX="58.0" layoutY="170.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="targetSchool" layoutX="58.0" layoutY="225.0" prefHeight="25.0" prefWidth="174.0" />
-            <ChoiceBox fx:id="program" layoutX="287.0" layoutY="225.0" prefHeight="25.0" prefWidth="174.0" />
-            <ChoiceBox fx:id="firstSemester" layoutX="58.0" layoutY="278.0" prefHeight="25.0" prefWidth="174.0" />
-            <TextField fx:id="firstSemesterYear" layoutX="288.0" layoutY="278.0" prefHeight="25.0" prefWidth="174.0" promptText="Year" />
-            <Label layoutX="58.0" layoutY="94.0" text="First Name" />
-            <Label layoutX="288.0" layoutY="94.0" text="Last Name" />
-            <Label layoutX="58.0" layoutY="153.0" text="Gender" />
-            <Label layoutX="287.0" layoutY="153.0" text="Date" />
-            <Label layoutX="58.0" layoutY="208.0" text="Target School" />
-            <Label layoutX="286.0" layoutY="208.0" text="Program" />
-            <Label layoutX="58.0" layoutY="261.0" text="First Semester" />
-            <Label layoutX="58.0" layoutY="317.0" text="Additional Courses" />
-            <CheckComboBox fx:id="addCourses" layoutX="58.0" layoutY="332.0" prefHeight="25.0" prefWidth="174.0" />
-            <Label layoutX="288.0" layoutY="317.0" text="Years Taken" />
-            <CheckComboBox fx:id="perCharsBox" layoutX="53.0" layoutY="384.0" prefHeight="25.0" prefWidth="410.0" />
-            <CheckComboBox fx:id="acaChars" layoutX="53.0" layoutY="429.0" prefHeight="25.0" prefWidth="410.0" />
-            <Label layoutX="53.0" layoutY="367.0" text="Personal Characteristics" />
-            <Label layoutX="53.0" layoutY="409.0" text="Academic Characteristics" />
-            <TextField fx:id="addCourseYears" layoutX="286.0" layoutY="332.0" />
+            <TextField fx:id="firstName" layoutX="74.0" layoutY="90.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="lastName" layoutX="280.0" layoutY="90.0" prefHeight="25.0" prefWidth="174.0" />
+            <DatePicker fx:id="date" layoutX="281.0" layoutY="142.0" prefHeight="25.0" prefWidth="174.0" />
+            <ChoiceBox fx:id="gender" layoutX="76.0" layoutY="142.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="targetSchool" layoutX="76.0" layoutY="192.0" prefHeight="25.0" prefWidth="174.0" />
+            <ChoiceBox fx:id="program" layoutX="280.0" layoutY="192.0" prefHeight="25.0" prefWidth="174.0" />
+            <ChoiceBox fx:id="firstSemester" layoutX="76.0" layoutY="242.0" prefHeight="25.0" prefWidth="174.0" />
+            <TextField fx:id="firstSemesterYear" layoutX="280.0" layoutY="242.0" prefHeight="25.0" prefWidth="174.0" promptText="Year">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></TextField>
+            <Label layoutX="76.0" layoutY="76.0" text="First Name">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="280.0" layoutY="76.0" text="Last Name">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="126.0" text="Gender">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="280.0" layoutY="126.0" text="Date">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="176.0" text="Target School">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="280.0" layoutY="176.0" text="Program">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="226.0" text="First Semester">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="76.0" layoutY="276.0" text="Additional Courses">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <CheckComboBox fx:id="addCourses" layoutX="76.0" layoutY="292.0" prefHeight="25.0" prefWidth="174.0" />
+            <Label layoutX="280.0" layoutY="276.0" text="Years Taken">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <CheckComboBox fx:id="perCharsBox" layoutX="77.0" layoutY="345.0" prefHeight="25.0" prefWidth="379.0" />
+            <CheckComboBox fx:id="acaChars" layoutX="77.0" layoutY="392.0" prefHeight="25.0" prefWidth="379.0" />
+            <Label layoutX="77.0" layoutY="329.0" text="Personal Characteristics">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <Label layoutX="77.0" layoutY="376.0" text="Academic Characteristics">
+               <font>
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Label>
+            <TextField fx:id="addCourseYears" layoutX="280.0" layoutY="292.0" prefHeight="25.0" prefWidth="174.0" />
          </children>
       </AnchorPane>
    </children>
