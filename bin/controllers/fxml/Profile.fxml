@@ -9,7 +9,7 @@
 <?import org.controlsfx.control.CheckComboBox?>
 
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="application.ProfileController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controllers.ProfileController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
