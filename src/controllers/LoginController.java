@@ -10,7 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import model.LoginModel;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
@@ -44,7 +43,6 @@ public class LoginController {
 	private Stage stage;
 	private Scene scene;
 	
-	public LoginModel loginModel = new LoginModel();
 	
 
 	public void loginBtnClicked(ActionEvent event) throws Exception {
