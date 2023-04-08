@@ -6,18 +6,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SampleController">
+<VBox stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SampleController">
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="500.0">
+      <AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../../application.css">
          <children>
-            <Label layoutX="197.0" layoutY="14.0" text="EasyRec">
+            <Button layoutX="165.0" layoutY="103.0" mnemonicParsing="false" onAction="#switchToCreateRec" text="Create Recommendation" />
+            <Button layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToLogin" text="Logout">
                <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <Button layoutX="176.0" layoutY="86.0" mnemonicParsing="false" onAction="#switchToCreateRec" text="Create Recommendation" />
-            <Button layoutX="28.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToLogin" text="Logout" />
+                  <Font name="Avenir Heavy" size="13.0" />
+               </font></Button>
             <Button contentDisplay="CENTER" layoutX="391.0" layoutY="19.0" mnemonicParsing="false" onAction="#switchToProfile" text="Edit Profile" />
+            <Label layoutX="189.0" layoutY="12.0" style="-fx-font-size: 30;" styleClass="large-label" stylesheets="@../../application.css" text="Easy Rec" />
          </children>
       </AnchorPane>
    </children>

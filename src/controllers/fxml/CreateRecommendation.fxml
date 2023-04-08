@@ -17,7 +17,7 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b5bec6" height="394.0" layoutX="53.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="410.0" />
             <Button layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#switchToScene1" text="Exit To Home" />
-            <Label layoutX="84.0" layoutY="14.0" stylesheets="@../../application.css" text="Create Recommendation">
+            <Label layoutX="84.0" layoutY="14.0" style="-fx-font-family: Avenir Heavy; -fx-font-size: 30;" stylesheets="@../../application.css" text="Create Recommendation">
                <font>
                   <Font name="Avenir Heavy" size="30.0" />
                </font>
