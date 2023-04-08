@@ -114,7 +114,7 @@ public class CreateRecommendationController implements Initializable{
     		}
     		
     		
-    		String url = "jdbc:sqlite:recommendation.db";
+    		String url = "jdbc:sqlite:src/database/recommendation.db";
     		Connection conn = DriverManager.getConnection(url);
     		String sql = "INSERT INTO Recommendation (FirstName, LastName, Gender, TargetSchool, CurrentDate, Program, FirstSemester, FirstYear, OtherCourses, LetterGrade, PersonalCharacteristics, AcademicCharacteristics) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     		PreparedStatement st = conn.prepareStatement(sql);

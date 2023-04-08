@@ -78,7 +78,7 @@ public class ProfileController implements Initializable{
 			courses += x + ", ";
 		}
 		try {
-			String url = "jdbc:sqlite:recommendation.db";
+			String url = "jdbc:sqlite:src/database/recommendation.db";
 			Connection conn = DriverManager.getConnection(url);
 			
 			String delString = "DELETE FROM Profile";
