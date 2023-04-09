@@ -13,19 +13,9 @@ import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-/*
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ResourceBundle;
 
-import application.SQLiteConnection;
-*/
 import java.util.Scanner;
 import java.io.File;
-
 
 
 public class LoginController {
@@ -43,37 +33,6 @@ public class LoginController {
 	private Stage stage;
 	private Scene scene;
 	
-	
-
-	public void loginBtnClicked(ActionEvent event) throws Exception {
-		//checkDBCred();
-	}
-	
-	/*@FXML
-    public void Login(ActionEvent event) throws IOException{
-        
-		String inputtedPassword = PasswordField.getText();
-		
-		try {
-			if(loginModel.defaultMatch(inputtedPassword)) {
-				Parent root = FXMLLoader.load(getClass().getResource("gui/ChangePassword.fxml"));
-	    		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	    		scene = new Scene(root);
-	    		stage.setScene(scene);
-	    		stage.show();
-			}
-			else {
-				incorrectLabel.setOpacity(1);
-			}
-		}
-		
-		catch (SQLException e) {
-			e.printStackTrace();
-			
-		}
-	
-    }
-	*/
 	
     @FXML
     public void Login(ActionEvent event) throws IOException{
