@@ -33,7 +33,11 @@ public class LoginController {
 	private Stage stage;
 	private Scene scene;
 	
-	
+	/**
+	 * Checks if the default password is submitted
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     public void Login(ActionEvent event) throws IOException{
         String FilePath = "src/resources/password.txt";

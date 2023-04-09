@@ -54,6 +54,12 @@ public class ProfileController implements Initializable{
 
     Stage stage;
     Scene scene;
+    
+    /**
+	 * Handles when the cancelled button is pressed
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void cancelPressed(ActionEvent event) throws IOException{
 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Scene1.fxml"));
@@ -63,6 +69,11 @@ public class ProfileController implements Initializable{
 		stage.show();
     }
 
+    /**
+	 * Handles when save button is pressed
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException{
     	
@@ -107,6 +118,10 @@ public class ProfileController implements Initializable{
 		}
     }
 
+    /**
+	 * Overrides default initialize method and save possible options 
+	 * @param URL and Resource Bundle
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		final ObservableList<String> courses = FXCollections.observableArrayList();

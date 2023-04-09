@@ -15,7 +15,6 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
 			Scene scene = new Scene(root, Color.LIGHTBLUE);
 
-			
 			stage.setScene(scene);
 			stage.show();
 		} catch(Exception e) {

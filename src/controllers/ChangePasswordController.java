@@ -29,10 +29,15 @@ public class ChangePasswordController {
 	private Stage stage;
 	private Scene scene;
 	
+	/**
+	 * Check if password matches the one on file
+	 * @param event
+	 * @throws IOException
+	 */
 	public void confirmLogin(ActionEvent event) throws IOException{
 		if(confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
-			File f = new File("src/resources/password.txt");
 			
+			File f = new File("src/resources/password.txt");
 			FileWriter writer = new FileWriter(f, false);
             writer.write("");
             writer.close();

@@ -15,7 +15,11 @@ public class SampleController {
 	private Stage stage;
 	private Scene scene;
 	
-	
+	/**
+	 * Switches to Scene1
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToScene1(ActionEvent event) throws IOException {
 
 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Scene1.fxml"));
@@ -25,6 +29,12 @@ public class SampleController {
 		stage.show();
 	}
 	
+	
+	/**
+	 * Switches to Create Recommendation page
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToCreateRec(ActionEvent event) throws IOException{
 
 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/CreateRecommendation.fxml"));
@@ -34,6 +44,11 @@ public class SampleController {
 		stage.show();
 	}
 	
+	/**
+	 * Switches to Login page
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToLogin(ActionEvent event) throws IOException{
 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -42,6 +57,11 @@ public class SampleController {
 		stage.show();
 	}
 	
+	/**
+	 * Switches to Profile page
+	 * @param event
+	 * @throws IOException
+	 */
 	public void switchToProfile(ActionEvent event) throws IOException{
 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Profile.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -50,6 +70,11 @@ public class SampleController {
 		stage.show();
 	}
 	
+	/**
+	 * Switches to logout page if user logs out
+	 * @param event
+	 * @throws IOException
+	 */
 	public void logout(ActionEvent event) throws IOException{
  		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
  		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

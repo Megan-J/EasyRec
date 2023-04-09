@@ -36,8 +36,6 @@ public class CreateRecommendationController implements Initializable{
 	private String[] programList = {"MS", "MBA", "PhD"};
 	private String[] semesterList = {"Spring", "Fall", "Summer"};
 
-
-
     @FXML
     protected Button submit;
 
@@ -78,7 +76,11 @@ public class CreateRecommendationController implements Initializable{
     protected CheckComboBox<String> acaChars;
     
      
-    
+    /**
+	 * Switches to Scene1
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void switchToScene1(ActionEvent event) throws IOException{
     	
@@ -91,7 +93,11 @@ public class CreateRecommendationController implements Initializable{
     }
     
     
-  	
+    /**
+	 * Submits recommendation to database
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
     	try {
@@ -142,6 +148,10 @@ public class CreateRecommendationController implements Initializable{
     	}
     }
 
+    /**
+	 * Adds information to the database
+	 * @param URL, ResourceBundle
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
     	gender.getItems().addAll(genderList);
