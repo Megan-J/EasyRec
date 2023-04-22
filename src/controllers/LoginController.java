@@ -57,7 +57,7 @@ public class LoginController {
         
         else if(PasswordField.getText().equals(line))
     	{
-    		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Scene1.fxml"));
+    		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/HomePage.fxml"));
     		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     		scene = new Scene(root);
     		stage.setScene(scene);

@@ -22,7 +22,7 @@ public class SampleController {
 	 */
 	public void switchToScene1(ActionEvent event) throws IOException {
 
-		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Scene1.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/HomePage.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -71,12 +71,12 @@ public class SampleController {
 	}
 	
 	/**
-	 * Switches to logout page if user logs out
+	 * Switches to change password page
 	 * @param event
 	 * @throws IOException
 	 */
-	public void logout(ActionEvent event) throws IOException{
- 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
+	public void switchToChangePassword(ActionEvent event) throws IOException{
+ 		Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/ChangePassword.fxml"));
  		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
  		scene = new Scene(root);
  		stage.setScene(scene);
