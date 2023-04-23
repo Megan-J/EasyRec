@@ -1,18 +1,15 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.io.FileWriter;
 import java.io.File;
+
+import application.Main;
 
 
 public class ChangePasswordController {
@@ -26,15 +23,16 @@ public class ChangePasswordController {
 	@FXML
 	private Label errorMessage;
 	
-	private Stage stage;
-	private Scene scene;
-	
 	/**
 	 * Check if password matches the one on file
 	 * @param event
 	 * @throws IOException
 	 */
+	@FXML
 	public void confirmLogin(ActionEvent event) throws IOException{
+		
+		Main main = new Main();
+		
 		if(confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
 			
 			File f = new File("src/resources/password.txt");
@@ -47,11 +45,7 @@ public class ChangePasswordController {
             writer.write(confirmField.getText());
             writer.close();
 	        
-			Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
-			stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-			scene = new Scene(root);
-			stage.setScene(scene);
-			stage.show();
+            main.switchScene("/controllers/fxml/Login.fxml");
 		}
 		else
 		{

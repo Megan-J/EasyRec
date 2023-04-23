@@ -8,37 +8,37 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
-            <Label alignment="CENTER" layoutX="180.0" layoutY="37.0" prefHeight="43.0" prefWidth="142.0" text="EasyRec" textAlignment="CENTER">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5a84a8" height="647.0" layoutY="181.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1241.0" />
+            <Label alignment="CENTER" layoutX="464.0" layoutY="42.0" prefHeight="87.0" prefWidth="315.0" text="EasyRec" textAlignment="CENTER">
                <font>
-                  <Font name="Futura Medium" size="35.0" />
+                  <Font name="Futura Medium" size="65.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5a84a8" height="375.0" layoutY="127.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
-            <Label alignment="CENTER" layoutX="185.0" layoutY="149.0" prefHeight="56.0" prefWidth="133.0" text="Welcome" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="476.0" layoutY="262.0" prefHeight="70.0" prefWidth="272.0" text="Welcome" textFill="WHITE">
                <font>
-                  <Font name="Avenir Book" size="27.0" />
+                  <Font name="Avenir Book" size="48.0" />
                </font>
             </Label>
-            <PasswordField fx:id="PasswordField" layoutX="159.0" layoutY="251.0" promptText="Password">
+            <PasswordField fx:id="PasswordField" layoutX="484.0" layoutY="460.0" promptText="Password">
                <font>
-                  <Font name="Avenir Book" size="15.0" />
+                  <Font name="Avenir Book" size="23.0" />
                </font></PasswordField>
-            <Button fx:id="loginBtn" defaultButton="true" layoutX="207.0" layoutY="345.0" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="87.0" text="Sign In">
+            <Button fx:id="loginBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="538.0" layoutY="644.0" mnemonicParsing="false" onAction="#Login" prefHeight="44.0" prefWidth="185.0" text="Sign In">
                <font>
-                  <Font name="Avenir Book" size="16.0" />
+                  <Font name="Avenir Book" size="18.0" />
                </font></Button>
-            <Label alignment="CENTER" layoutX="137.0" layoutY="198.0" prefHeight="43.0" prefWidth="230.0" text="Enter your password" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="504.0" layoutY="392.0" prefHeight="43.0" prefWidth="230.0" text="Enter your password" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Avenir Heavy" size="21.0" />
+                  <Font name="Avenir Book" size="23.0" />
                </font>
             </Label>
-            <Label fx:id="incorrectLabel" alignment="CENTER" layoutX="138.0" layoutY="293.0" opacity="0.0" prefHeight="43.0" prefWidth="230.0" text="Incorrect password, try again" textAlignment="CENTER" textFill="#d05050">
+            <Label fx:id="incorrectLabel" alignment="CENTER" layoutX="414.0" layoutY="556.0" opacity="0.0" prefHeight="43.0" prefWidth="469.0" text="Incorrect password, try again" textAlignment="CENTER" textFill="#d05050">
                <font>
-                  <Font name="Arial Rounded MT Bold" size="14.0" />
+                  <Font name="Arial Rounded MT Bold" size="23.0" />
                </font>
             </Label>
          </children>

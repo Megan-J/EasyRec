@@ -7,22 +7,31 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SampleController">
+<VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../../application.css">
          <children>
-            <Rectangle fill="#4d91d0" height="55.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
-            <Rectangle fill="#5a84a8" height="353.0" layoutY="149.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="500.0" />
-            <Button layoutX="101.0" layoutY="108.0" mnemonicParsing="false" onAction="#switchToCreateRec" text="Create Recommendation" />
-            <Button layoutX="28.0" layoutY="108.0" mnemonicParsing="false" onAction="#switchToLogin" text="Logout">
+            <Rectangle fill="#5a84a8" height="672.0" layoutY="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1243.0" />
+            <Rectangle fill="#8dbfeb" height="86.0" layoutX="-46.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1289.0" />
+            <Button layoutX="362.0" layoutY="145.0" mnemonicParsing="false" onAction="#switchToCreateRec" prefHeight="48.0" prefWidth="225.0" text="Create Recommendation">
                <font>
-                  <Font name="Avenir Heavy" size="13.0" />
+                  <Font name="Avenir Book" size="23.0" />
                </font></Button>
-            <Button contentDisplay="CENTER" layoutX="394.0" layoutY="108.0" mnemonicParsing="false" onAction="#switchToProfile" text="Edit Profile" />
-            <Button layoutX="277.0" layoutY="108.0" mnemonicParsing="false" onAction="#switchToChangePassword" text="Reset Password" />
-            <Text layoutX="226.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EasyRec">
+            <Button layoutX="62.0" layoutY="143.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="48.0" prefWidth="225.0" text="Logout">
                <font>
-                  <Font name="Futura Medium" size="36.0" />
+                  <Font name="Avenir Book" size="23.0" />
+               </font></Button>
+            <Button contentDisplay="CENTER" layoutX="946.0" layoutY="142.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="48.0" prefWidth="225.0" text="Edit Profile">
+               <font>
+                  <Font name="Avenir Book" size="23.0" />
+               </font></Button>
+            <Button layoutX="661.0" layoutY="143.0" mnemonicParsing="false" onAction="#switchToChangePassword" prefHeight="48.0" prefWidth="225.0" text="Reset Password">
+               <font>
+                  <Font name="Avenir Book" size="23.0" />
+               </font></Button>
+            <Text layoutX="657.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EasyRec" textAlignment="CENTER" wrappingWidth="108.27333068847656">
+               <font>
+                  <Font name="Futura Medium" size="65.0" />
                </font>
             </Text>
          </children>

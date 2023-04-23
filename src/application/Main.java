@@ -1,25 +1,43 @@
 package application;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.paint.Color;
+
 
 
 public class Main extends Application {
-	@Override
-	public void start(Stage stage) {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
-			Scene scene = new Scene(root, Color.LIGHTBLUE);
+	
+	public static Stage stg;
+	
 
-			stage.setScene(scene);
-			stage.show();
+	@Override
+	public void start(Stage mainStage) {
+		try {
+			stg = mainStage;
+			
+			Parent root = FXMLLoader.load(getClass().getResource("/controllers/fxml/Login.fxml"));
+			Scene scene = new Scene(root, 1240, 800);
+			mainStage.setResizable(false);
+			mainStage.setTitle("EasyRec");
+			mainStage.setScene(scene);
+			mainStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+
+	
+	public void switchScene(String fxml) throws IOException {
+		Parent parent = FXMLLoader.load(getClass().getResource(fxml));
+		Scene scene = new Scene(parent, 1240, 800);
+		stg.setScene(scene);
+		stg.show();
 	}
 	
 	public static void main(String[] args) {
