@@ -73,7 +73,7 @@ public class CreateRecommendationController implements Initializable{
 	 * @throws IOException
 	 */
     @FXML
-    void switchToHomePage(ActionEvent event) throws IOException{
+    void cancelBtnPressed(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
     	main.switchScene("/controllers/fxml/HomePage.fxml");
@@ -87,6 +87,9 @@ public class CreateRecommendationController implements Initializable{
 	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
+    	
+    	Main main = new Main();
+    	
     	try {
     		LocalDate dateVal =	date.getValue();
     		String dateString = dateVal.toString();
@@ -133,6 +136,8 @@ public class CreateRecommendationController implements Initializable{
     	{
     		System.err.println(e.getMessage());
     	}
+    	
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
 
     /**

@@ -74,6 +74,8 @@ public class ProfileController implements Initializable{
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException{
     	
+    	Main main = new Main();
+    	
     	String semesters = "";
 		for(String x: semestersField.getCheckModel().getCheckedItems())
 		{
@@ -113,6 +115,8 @@ public class ProfileController implements Initializable{
 		{
 			System.err.println(e.getMessage());
 		}
+		
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
 
     /**
