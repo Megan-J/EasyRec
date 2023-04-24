@@ -19,6 +19,8 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
 import application.Main;
+import java.io.File;
+import java.io.FileWriter;
 
 public class CreateRecommendationController implements Initializable{
 	
@@ -88,27 +90,64 @@ public class CreateRecommendationController implements Initializable{
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
     	
+
+		LocalDate dateVal =	date.getValue();
+		String dateString = dateVal.toString();
+		String pronoun = "";
+		if(gender.getValue().equals("Male"))
+		{
+			pronoun = "He";
+		}
+		else if(gender.getValue().equals("Female"))
+		{
+			pronoun = "She";
+			
+		}
+		else
+		{
+			pronoun = "They";
+		}
+		
+		String courses = "";
+		for(String x : addCourses.getCheckModel().getCheckedItems())
+		{
+			courses += x + ", ";
+		}
+		String perChars = "";
+		for(String x: perCharsBox.getCheckModel().getCheckedItems())
+		{
+			perChars += x + ", ";
+		}
+		String acadChars = "";
+		for(String x: acaChars.getCheckModel().getCheckedItems())
+		{
+			acadChars += x + ", ";
+		}
+
+        
+
+		File newRec = new File("src/resources/recs/" + lastName.getText());
+		boolean created = newRec.createNewFile();
+		System.out.println(created);
+		FileWriter recWriter = new FileWriter("src/resources/recs/" + lastName.getText());
+		
+		recWriter.write(
+				
+				"Letter of Recommendation For: " + firstName.getText() + 
+				" Date: " + dateString +
+				"To: Graduate Admissions Committee I am writing this letter to recommend my former student" + firstName.getText() + " " + lastName.getText()+ " " +
+				"who is applying for the " + program.getValue() + "in your school. I met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + 
+				" when " + pronoun.toLowerCase() + " enrolled in my " + courses + " courses. " +
+				firstName.getText() + " earned an A from this tough course, and this shows how knowledgeable and hard working " + 
+				pronoun.toLowerCase() + " is.");
+				
+		
+		recWriter.close();
+		
+    	
     	Main main = new Main();
     	
     	try {
-    		LocalDate dateVal =	date.getValue();
-    		String dateString = dateVal.toString();
-    		String courses = "";
-    		for(String x : addCourses.getCheckModel().getCheckedItems())
-    		{
-    			courses += x + ", ";
-    		}
-    		String perChars = "";
-    		for(String x: perCharsBox.getCheckModel().getCheckedItems())
-    		{
-    			perChars += x + ", ";
-    		}
-    		String acadChars = "";
-    		for(String x: acaChars.getCheckModel().getCheckedItems())
-    		{
-    			acadChars += x + ", ";
-    		}
-    		
     		
     		String url = "jdbc:sqlite:src/database/recommendation.db";
     		Connection conn = DriverManager.getConnection(url);
