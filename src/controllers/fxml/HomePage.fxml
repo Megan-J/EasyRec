@@ -9,19 +9,23 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< Updated upstream
 <VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
+=======
+<VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
+>>>>>>> Stashed changes
    <children>
-      <AnchorPane prefHeight="500.0" prefWidth="500.0" stylesheets="@../../application.css">
+      <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
             <Rectangle fill="#5a84a8" height="672.0" layoutY="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1243.0" />
             <Rectangle fill="#8dbfeb" height="86.0" layoutX="-46.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1289.0" />
             <Button layoutX="362.0" layoutY="145.0" mnemonicParsing="false" onAction="#switchToCreateRec" prefHeight="48.0" prefWidth="225.0" text="Create Recommendation">
                <font>
-                  <Font name="Avenir Book" size="23.0" />
+                  <Font name="Avenir Book" size="17.0" />
                </font></Button>
             <Button layoutX="62.0" layoutY="143.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToLogin" prefHeight="48.0" prefWidth="225.0" text="Logout">
                <font>
-                  <Font name="Avenir Book" size="52.0" />
+                  <Font name="Avenir Book" size="23.0" />
                </font></Button>
             <Button contentDisplay="CENTER" layoutX="946.0" layoutY="142.0" mnemonicParsing="false" onAction="#switchToProfile" prefHeight="48.0" prefWidth="225.0" text="Edit Profile">
                <font>
@@ -31,7 +35,7 @@
                <font>
                   <Font name="Avenir Book" size="23.0" />
                </font></Button>
-            <Text layoutX="657.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EasyRec" textAlignment="CENTER" wrappingWidth="160.27333068847656">
+            <Text layoutX="522.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EasyRec" textAlignment="CENTER" wrappingWidth="190.27333068847656">
                <font>
                   <Font name="Futura Medium" size="46.0" />
                </font>
