@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -67,7 +68,13 @@ public class ProfileController implements Initializable{
     void backPressed(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
-    	main.switchScene("/controllers/fxml/HomePage.fxml");
+    	
+        if(main.getPassword().equals("p"))
+        {
+        	main.switchScene("/controllers/fxml/Login.fxml");
+        } else {
+        	main.switchScene("/controllers/fxml/HomePage.fxml");
+        }
     }
 
     /**
@@ -117,6 +124,13 @@ public class ProfileController implements Initializable{
 		{
 			System.err.println(e.getMessage());
 		}
+		
+		if(main.getPassword().equals("p"))
+        {
+        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
+        } else {
+        	main.switchScene("/controllers/fxml/HomePage.fxml");
+        }
 		
     }
 

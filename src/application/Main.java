@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 	
 	public static Stage stg;
+	public static String password;
 	
 
 	@Override
@@ -31,7 +32,16 @@ public class Main extends Application {
 		}
 	}
 	
-
+	public String getPassword() {
+		return password;
+	
+	
+	}
+	
+	public void setPassword(String newPassword) {
+		password = newPassword;
+	}
+	
 	
 	public void switchScene(String fxml) throws IOException {
 		Parent parent = FXMLLoader.load(getClass().getResource(fxml));

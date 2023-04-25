@@ -90,9 +90,11 @@ public class CreateRecommendationController implements Initializable{
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
     	
+       	Main main = new Main();
 
 		LocalDate dateVal =	date.getValue();
 		String dateString = dateVal.toString();
+		
 		String pronoun = "";
 		if(gender.getValue().equals("Male"))
 		{
@@ -108,23 +110,26 @@ public class CreateRecommendationController implements Initializable{
 			pronoun = "They";
 		}
 		
+		
 		String courses = "";
 		for(String x : addCourses.getCheckModel().getCheckedItems())
 		{
 			courses += x + ", ";
 		}
+		
 		String perChars = "";
 		for(String x: perCharsBox.getCheckModel().getCheckedItems())
 		{
 			perChars += x + ", ";
 		}
+		
 		String acadChars = "";
 		for(String x: acaChars.getCheckModel().getCheckedItems())
 		{
 			acadChars += x + ", ";
 		}
 
-        
+
 
 		File newRec = new File("src/resources/recs/" + lastName.getText());
 		boolean created = newRec.createNewFile();
@@ -133,19 +138,33 @@ public class CreateRecommendationController implements Initializable{
 		
 		recWriter.write(
 				
-				"Letter of Recommendation For: " + firstName.getText() + 
-				" Date: " + dateString +
-				"To: Graduate Admissions Committee I am writing this letter to recommend my former student" + firstName.getText() + " " + lastName.getText()+ " " +
-				"who is applying for the " + program.getValue() + "in your school. I met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + 
-				" when " + pronoun.toLowerCase() + " enrolled in my " + courses + " courses. " +
-				firstName.getText() + " earned an A from this tough course, and this shows how knowledgeable and hard working " + 
-				pronoun.toLowerCase() + " is.");
+				"Letter of Recommendation\n\n"
+				+ "For: " + firstName.getText() + 
+				"\n\nDate: " + dateString +
+				"\n\nTo: Graduate Admissions Committee "
+				+ "\n\nI am writing this letter to recommend my former student " + firstName.getText() + " " + lastName.getText() +
+				" who is applying for the " + program.getValue() + " in your school. "
+				+ "\n\nI met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + 
+				" when " + pronoun.toLowerCase() + " enrolled in my " + courses + " course.\n\n" +
+				firstName.getText() + " earned an A from this tough course, and this shows how knowledgeable and "
+				+ "hard working " + pronoun.toLowerCase() + " is.\n\n"
+				
+				+ pronoun + " also earned " + " from my " + "course.\n\n"
+				
+				+ firstName.getText() 
+				
+				
+				
+				+ "Please do not hesitate to contact me with further questions.\n\n\n\n"
+				
+				+ "Very Respectfully,\n\n"
+	
+				
+				);
 				
 		
 		recWriter.close();
-		
-    	
-    	Main main = new Main();
+ 
     	
     	try {
     		

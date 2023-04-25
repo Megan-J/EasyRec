@@ -42,7 +42,8 @@ public class LoginController {
         
         if(line.equals("p") && PasswordField.getText().equals("p"))
         {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
+        	main.setPassword(line);
+        	main.switchScene("/controllers/fxml/Profile.fxml");
         }
         
         else if(PasswordField.getText().equals(line))

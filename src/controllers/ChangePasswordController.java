@@ -46,6 +46,8 @@ public class ChangePasswordController {
             writer.close();
 	        
             main.switchScene("/controllers/fxml/Login.fxml");
+            
+            
 		}
 		else
 		{
