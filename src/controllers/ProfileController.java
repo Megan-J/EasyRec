@@ -15,10 +15,14 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
+
+import com.sun.xml.internal.bind.v2.runtime.Name;
+
 import application.Main;
 
 
@@ -49,7 +53,7 @@ public class ProfileController implements Initializable{
     private Button saveButton;
 
     @FXML
-    private Button cancelButton;
+    private Button backButton;
 
     Stage stage;
     Scene scene;
@@ -60,7 +64,7 @@ public class ProfileController implements Initializable{
 	 * @throws IOException
 	 */
     @FXML
-    void cancelPressed(ActionEvent event) throws IOException{
+    void backPressed(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
     	main.switchScene("/controllers/fxml/HomePage.fxml");
@@ -108,15 +112,12 @@ public class ProfileController implements Initializable{
     		if(rowsInserted > 0)
     			System.out.println("Success");
     		conn.close();
-			
-			
 		}
 		catch(Exception e)
 		{
 			System.err.println(e.getMessage());
 		}
 		
-    	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
 
     /**

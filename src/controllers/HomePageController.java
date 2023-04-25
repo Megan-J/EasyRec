@@ -98,9 +98,9 @@ public class HomePageController {
 	 * @param event
 	 * @throws IOException
 	 */
-	public void switchToChangePassword(ActionEvent event) throws IOException{
+	public void switchToResetPassword(ActionEvent event) throws IOException{
 		Main main = new Main();
-		main.switchScene("/controllers/fxml/ChangePassword.fxml");
+		main.switchScene("/controllers/fxml/ResetPassword.fxml");
 		
  	}
 }

@@ -9,11 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<<<<<<< Updated upstream
-<VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" stylesheets="@../../application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
-=======
 <VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
->>>>>>> Stashed changes
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
@@ -31,7 +27,7 @@
                <font>
                   <Font name="Avenir Book" size="23.0" />
                </font></Button>
-            <Button layoutX="661.0" layoutY="143.0" mnemonicParsing="false" onAction="#switchToChangePassword" prefHeight="48.0" prefWidth="225.0" text="Reset Password">
+            <Button layoutX="661.0" layoutY="143.0" mnemonicParsing="false" onAction="#switchToResetPassword" prefHeight="48.0" prefWidth="225.0" text="Reset Password">
                <font>
                   <Font name="Avenir Book" size="23.0" />
                </font></Button>
@@ -42,7 +38,7 @@
             </Text>
             <TextField fx:id="searchField" layoutX="432.0" layoutY="315.0" prefHeight="48.0" prefWidth="450.0" />
             <Button fx:id="searchButton" layoutX="886.0" layoutY="315.0" mnemonicParsing="false" onAction="#searchRecs" prefHeight="48.0" prefWidth="225.0" text="Search" />
-            <ListView fx:id="searchList" onMouseClicked="#handleMouseClick" layoutX="436.0" layoutY="366.0" prefHeight="200.0" prefWidth="672.0" />
+            <ListView fx:id="searchList" layoutX="436.0" layoutY="366.0" onMouseClicked="#handleMouseClick" prefHeight="200.0" prefWidth="672.0" />
          </children>
       </AnchorPane>
    </children>
