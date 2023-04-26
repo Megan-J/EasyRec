@@ -10,15 +10,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Password;
+import model.Profile;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
@@ -26,10 +28,13 @@ import org.controlsfx.control.CheckComboBox;
 import com.sun.xml.internal.bind.v2.runtime.Name;
 
 import application.Main;
+import dal.DbSqlite;
 
 
 public class ProfileController implements Initializable{
 	private Password password;
+	
+	private Profile profile;
 	
     @FXML
     private TextField nameField;
@@ -90,6 +95,7 @@ public class ProfileController implements Initializable{
     void saveButtonPressed(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
+    	password = new Password();
     	
     	String semesters = "";
 		for(String x: semestersField.getCheckModel().getCheckedItems())
@@ -102,8 +108,8 @@ public class ProfileController implements Initializable{
 			courses += x + ", ";
 		}
 		try {
-			String url = "jdbc:sqlite:src/database/recommendation.db";
-			Connection conn = DriverManager.getConnection(url);
+			DbSqlite dal = DbSqlite.getInstance();
+			Connection conn = dal.getConnection();
 			
 			String delString = "DELETE FROM Profile";
 			Statement del = conn.createStatement();
@@ -129,7 +135,7 @@ public class ProfileController implements Initializable{
 			System.err.println(e.getMessage());
 		}
 		
-		if(main.getPassword().equals("p"))
+		if(password.getPassword().equals("p"))
         {
         	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
@@ -144,6 +150,28 @@ public class ProfileController implements Initializable{
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		profile = new Profile();
+		try {
+			ArrayList<String> profileAttributes = profile.getProfile();
+			String name = profileAttributes.get(0);
+			String title = profileAttributes.get(1);
+			String schoolDep = profileAttributes.get(2);
+			String email = profileAttributes.get(3);
+			String phone = profileAttributes.get(4);
+			String sem = profileAttributes.get(5);
+			String course = profileAttributes.get(6);
+			
+			nameField.setText(name);
+			titleField.setText(title);
+			schoolDepField.setText(schoolDep);
+			emailField.setText(email);
+			phoneField.setText(phone);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		final ObservableList<String> courses = FXCollections.observableArrayList();
 
     	courses.add("CS151: Object-Oriented Design");
