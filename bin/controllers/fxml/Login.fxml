@@ -27,7 +27,7 @@
                <font>
                   <Font name="Avenir Book" size="23.0" />
                </font></PasswordField>
-            <Button fx:id="loginBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="538.0" layoutY="644.0" mnemonicParsing="false" onAction="#Login" prefHeight="44.0" prefWidth="185.0" text="Sign In">
+            <Button fx:id="loginBtn" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="538.0" layoutY="644.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="185.0" text="Sign In">
                <font>
                   <Font name="Avenir Book" size="18.0" />
                </font></Button>

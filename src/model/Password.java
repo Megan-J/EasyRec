@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Password {
 	
-	private String password; //private instance variable that stores the User's password
+	private String passwordStr; //private instance variable that stores the User's password
 	
 	public Password() throws IOException //constructor for Password object that Controller will use to manipulate password
 	{
@@ -16,13 +16,13 @@ public class Password {
         
         Scanner scanner = new Scanner(file);
         String password = scanner.nextLine();
-        this.password = password;
+        this.passwordStr = password;
         scanner.close();
 	}
 	
 	public String getPassword() //getter method for password
 	{
-		return password;
+		return passwordStr;
 	}
 	
 	public void setPassword(String p) throws IOException //sets the password to String param p

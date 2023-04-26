@@ -11,8 +11,16 @@ import dal.DbSqlite;
 
 public class Profile {
 	
-	private static DbSqlite dal = DbSqlite.getInstance();
-	private static ArrayList<String> profileData = new ArrayList<>();
+	private DbSqlite dal = DbSqlite.getInstance();
+	private ArrayList<String> profileData = new ArrayList<>();
+	
+	private String name;
+	private String title;
+	private String schoolDep;
+	private String email;
+	private String phone;
+	private String sem;
+	private String courses;
 	
 	public Profile()
 	{
@@ -21,13 +29,13 @@ public class Profile {
 	
 	public ArrayList<String> getProfile() throws SQLException
 	{
-		String name = getData(dal.getConnection(), "Name", "Profile");
-		String title = getData(dal.getConnection(), "Title", "Profile");
-		String schoolDep = getData(dal.getConnection(), "SchoolName", "Profile");
-		String email = getData(dal.getConnection(), "Email", "Profile");
-		String phone = getData(dal.getConnection(), "Phone", "Profile");
-		String sem = getData(dal.getConnection(), "SemestersTaught", "Profile");
-		String courses = getData(dal.getConnection(), "CoursesTaught", "Profile");
+		name = getData(dal.getConnection(), "Name", "Profile");
+		title = getData(dal.getConnection(), "Title", "Profile");
+		schoolDep = getData(dal.getConnection(), "SchoolName", "Profile");
+		email = getData(dal.getConnection(), "Email", "Profile");
+		phone = getData(dal.getConnection(), "Phone", "Profile");
+		sem = getData(dal.getConnection(), "SemestersTaught", "Profile");
+		courses = getData(dal.getConnection(), "CoursesTaught", "Profile");
 		
 		profileData.add(name);
 		profileData.add(title);
@@ -68,7 +76,7 @@ public class Profile {
 		}
 	}
 	
-	private static String getData(Connection conn, String column, String table) throws SQLException
+	private String getData(Connection conn, String column, String table) throws SQLException
 	{
 			String data = "";
 			String select = "SELECT ";

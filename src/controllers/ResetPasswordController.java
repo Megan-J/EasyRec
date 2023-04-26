@@ -35,7 +35,7 @@ public class ResetPasswordController {
 	 * @throws IOException
 	 */
 	@FXML
-	public void confirmLogin(ActionEvent event) throws IOException{
+	public void changeLogin(ActionEvent event) throws IOException{
 		
 		Main main = new Main();
 		password = new Password();

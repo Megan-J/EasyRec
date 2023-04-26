@@ -30,7 +30,7 @@ public class LoginController {
 	 * @throws IOException
 	 */
     @FXML
-    public void Login(ActionEvent event) throws IOException{
+    public void login(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
     	password = new Password();
