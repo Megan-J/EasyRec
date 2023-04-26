@@ -18,11 +18,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
-import application.Main;
 import java.io.File;
 import java.io.FileWriter;
 
-public class CreateRecommendationController implements Initializable{
+public class CreateRecommendationController implements Initializable, SwitchInt {
 	
 	
 	private String[] genderList = {"Male", "Female", "Other"};
@@ -76,9 +75,7 @@ public class CreateRecommendationController implements Initializable{
 	 */
     @FXML
     void cancelBtnPressed(ActionEvent event) throws IOException{
-    	
-    	Main main = new Main();
-    	main.switchScene("/controllers/fxml/HomePage.fxml");
+    	switchScene("/controllers/fxml/HomePage.fxml");
     }
     
     
@@ -89,8 +86,6 @@ public class CreateRecommendationController implements Initializable{
 	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
-    	
-       	Main main = new Main();
 
 		LocalDate dateVal =	date.getValue();
 		String dateString = dateVal.toString();
@@ -195,7 +190,7 @@ public class CreateRecommendationController implements Initializable{
     		System.err.println(e.getMessage());
     	}
     	
-    	main.switchScene("/controllers/fxml/HomePage.fxml");
+    	switchScene("/controllers/fxml/HomePage.fxml");
     }
 
     /**

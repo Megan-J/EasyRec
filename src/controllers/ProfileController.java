@@ -27,7 +27,7 @@ import application.Main;
 import dal.DbSqlite;
 
 
-public class ProfileController implements Initializable{
+public class ProfileController implements Initializable, SwitchInt {
 	private Password password;
 	
 	private Profile profile;
@@ -70,15 +70,14 @@ public class ProfileController implements Initializable{
     @FXML
     void backPressed(ActionEvent event) throws IOException{
     	
-    	Main main = new Main();
     	password = new Password();
     	String p = password.getPassword();
     	
         if(p.equals("p"))
         {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
+        	switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
-        	main.switchScene("/controllers/fxml/HomePage.fxml");
+        	switchScene("/controllers/fxml/HomePage.fxml");
         }
     }
 
@@ -118,9 +117,9 @@ public class ProfileController implements Initializable{
 		
 		if(password.getPassword().equals("p"))
         {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
+        	switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
-        	main.switchScene("/controllers/fxml/HomePage.fxml");
+        	switchScene("/controllers/fxml/HomePage.fxml");
         }
 		
     }

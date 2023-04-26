@@ -12,7 +12,7 @@ import application.Main;
 import java.io.File;
 
 
-public class HomePageController {
+public class HomePageController implements SwitchInt {
 
 	
     @FXML
@@ -41,10 +41,9 @@ public class HomePageController {
     {
     	System.out.println("clicked on " + searchList.getSelectionModel().getSelectedItem());
     	
-    	Main main = new Main();
-		main.switchScene("/controllers/fxml/ViewRecommendation.fxml");
+		switchScene("/controllers/fxml/ViewRecommendation.fxml");
 		
-		main.stg.setUserData(searchList.getSelectionModel().getSelectedItem());
+		stg.setUserData(searchList.getSelectionModel().getSelectedItem());
 	
     }
 	/**
@@ -53,9 +52,7 @@ public class HomePageController {
 	 * @throws IOException
 	 */
 	public void switchToHomePage(ActionEvent event) throws IOException {
-		
-		Main main = new Main();
-		main.switchScene("/controllers/fxml/HomePage.fxml");
+		switchScene("/controllers/fxml/HomePage.fxml");
 	}
 	
 	
@@ -65,9 +62,7 @@ public class HomePageController {
 	 * @throws IOException
 	 */
 	public void switchToCreateRec(ActionEvent event) throws IOException{
-
-		Main main = new Main();
-		main.switchScene("/controllers/fxml/CreateRecommendation.fxml");
+		switchScene("/controllers/fxml/CreateRecommendation.fxml");
 	}
 	
 	/**
@@ -76,9 +71,7 @@ public class HomePageController {
 	 * @throws IOException
 	 */
 	public void switchToLogin(ActionEvent event) throws IOException{
-		
-		Main main = new Main();
-		main.switchScene("/controllers/fxml/Login.fxml");
+		switchScene("/controllers/fxml/Login.fxml");
 	}
 	
 	/**
@@ -87,10 +80,7 @@ public class HomePageController {
 	 * @throws IOException
 	 */
 	public void switchToProfile(ActionEvent event) throws IOException{
-		
-		Main main = new Main();
-		main.switchScene("/controllers/fxml/Profile.fxml");
-		
+		switchScene("/controllers/fxml/Profile.fxml");
 	}
 	
 	/**
@@ -99,8 +89,7 @@ public class HomePageController {
 	 * @throws IOException
 	 */
 	public void switchToResetPassword(ActionEvent event) throws IOException{
-		Main main = new Main();
-		main.switchScene("/controllers/fxml/ResetPassword.fxml");
+		switchScene("/controllers/fxml/ResetPassword.fxml");
 		
  	}
 }

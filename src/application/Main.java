@@ -1,7 +1,5 @@
 package application;
 	
-import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -28,13 +26,6 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void switchScene(String fxml) throws IOException {
-		Parent parent = FXMLLoader.load(getClass().getResource(fxml));
-		Scene scene = new Scene(parent, 1240, 800);
-		stg.setScene(scene);
-		stg.show();
 	}
 	
 	public static void main(String[] args) {

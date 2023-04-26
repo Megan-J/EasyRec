@@ -14,7 +14,7 @@ import java.io.File;
 import application.Main;
 
 
-public class ResetPasswordController {
+public class ResetPasswordController implements SwitchInt {
 	private Password password;
 	
 	@FXML
@@ -36,15 +36,13 @@ public class ResetPasswordController {
 	 */
 	@FXML
 	public void changeLogin(ActionEvent event) throws IOException{
-		
-		Main main = new Main();
 		password = new Password();
 		String p = password.getPassword();
         
         if(p.equals(currentField.getText()) && confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
 			
 			password.setPassword(confirmField.getText());
-            main.switchScene("/controllers/fxml/Login.fxml");
+            switchScene("/controllers/fxml/Login.fxml");
 		}
 		else
 		{
@@ -53,8 +51,6 @@ public class ResetPasswordController {
 	}
 	
 	public void switchToHomePage(ActionEvent event) throws IOException {
-		
-		Main main = new Main();
-		main.switchScene("/controllers/fxml/HomePage.fxml");
+		switchScene("/controllers/fxml/HomePage.fxml");
 	}
 }

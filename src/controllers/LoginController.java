@@ -9,9 +9,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-import application.Main;
-
-public class LoginController {
+public class LoginController implements SwitchInt{
 	
 	private Password password;
 	
@@ -32,17 +30,16 @@ public class LoginController {
     @FXML
     public void login(ActionEvent event) throws IOException{
     	
-    	Main main = new Main();
     	password = new Password();
     	String p = password.getPassword();
         
         if(p.equals("p") && PasswordField.getText().equals("p"))
         {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
+        	switchScene("/controllers/fxml/ChangePassword.fxml");
         }
         else if(PasswordField.getText().equals(p))
     	{
-        	main.switchScene("/controllers/fxml/HomePage.fxml");
+        	switchScene("/controllers/fxml/HomePage.fxml");
     	}
         else
         {
