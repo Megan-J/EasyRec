@@ -15,17 +15,13 @@ import model.Profile;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
-
-import com.sun.xml.internal.bind.v2.runtime.Name;
 
 import application.Main;
 import dal.DbSqlite;
@@ -107,28 +103,13 @@ public class ProfileController implements Initializable{
 		{
 			courses += x + ", ";
 		}
+		String name = nameField.getText();
+		String title = titleField.getText();
+		String school = schoolDepField.getText();
+		String email = emailField.getText();
+		String phone = phoneField.getText();
 		try {
-			DbSqlite dal = DbSqlite.getInstance();
-			Connection conn = dal.getConnection();
-			
-			String delString = "DELETE FROM Profile";
-			Statement del = conn.createStatement();
-			del.executeUpdate(delString);
-			
-			String sql = "INSERT INTO Profile (Name, Title, SchoolName, Email, Phone, SemestersTaught, CoursesTaught) VALUES (?, ?, ?, ?, ?, ?, ?)";
-			PreparedStatement st = conn.prepareStatement(sql);
-			st.setString(1, nameField.getText());
-			st.setString(2, titleField.getText());
-			st.setString(3, schoolDepField.getText());
-			st.setString(4, emailField.getText());
-			st.setString(5, phoneField.getText());
-			st.setString(6, semesters);
-			st.setString(7, courses);
-			
-    		int rowsInserted = st.executeUpdate();
-    		if(rowsInserted > 0)
-    			System.out.println("Success");
-    		conn.close();
+			profile.setProfile(name, title, school, email, phone, semesters, courses);
 		}
 		catch(Exception e)
 		{

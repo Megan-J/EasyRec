@@ -61,7 +61,6 @@ public class Profile {
 			int rowsInserted = st.executeUpdate();
 			if(rowsInserted > 0)
 				System.out.println("Success");
-			conn.close();
 		}
 		catch(Exception e)
 		{
@@ -88,17 +87,18 @@ public class Profile {
 	
 //	public static void main (String args[]) throws SQLException
 //	{
-//		ArrayList<String> dataSet = new ArrayList<>();
-//		Connection conn = dal.getConnection();
-//		String name = getData(conn, "Name", "Profile");
-//		System.out.println(name);
-//		
-//		try {
-//			dataSet = getProfile();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(dataSet.toString());
+////		ArrayList<String> dataSet = new ArrayList<>();
+////		Connection conn = dal.getConnection();
+////		String name = getData(conn, "Name", "Profile");
+////		System.out.println(name);
+////		
+////		try {
+////			dataSet = getProfile();
+////		} catch (SQLException e) {
+////			// TODO Auto-generated catch block
+////			e.printStackTrace();
+////		}
+////		System.out.println(dataSet.toString());
+////		setProfile("Ahmad", "Professor", "SJSU", "@", "510", "Fall, ", "CS151: Object-Oriented Design");
 //	}
 }

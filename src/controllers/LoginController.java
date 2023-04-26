@@ -9,9 +9,6 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
-import java.util.Scanner;
-import java.io.File;
-
 import application.Main;
 
 public class LoginController {

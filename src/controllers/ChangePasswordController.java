@@ -7,9 +7,6 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
-import java.io.FileWriter;
-import java.io.File;
-
 import application.Main;
 
 
