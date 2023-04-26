@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
+import model.Password;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 
@@ -13,6 +14,7 @@ import application.Main;
 
 
 public class ChangePasswordController {
+	private Password password;
 	
 	@FXML
 	private PasswordField newField;
@@ -32,22 +34,11 @@ public class ChangePasswordController {
 	public void confirmLogin(ActionEvent event) throws IOException{
 		
 		Main main = new Main();
+		password = new Password();
 		
 		if(confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
-			
-			File f = new File("src/resources/password.txt");
-			FileWriter writer = new FileWriter(f, false);
-            writer.write("");
-            writer.close();
-            
-            // Write new data to the file
-            writer = new FileWriter(f, true);
-            writer.write(confirmField.getText());
-            writer.close();
-	        
-            main.switchScene("/controllers/fxml/Login.fxml");
-            
-            
+			password.setPassword(confirmField.getText());
+            main.switchScene("/controllers/fxml/Profile.fxml");
 		}
 		else
 		{

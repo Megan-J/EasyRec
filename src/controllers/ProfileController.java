@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Password;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,7 +29,8 @@ import application.Main;
 
 
 public class ProfileController implements Initializable{
-
+	private Password password;
+	
     @FXML
     private TextField nameField;
 
@@ -68,10 +70,12 @@ public class ProfileController implements Initializable{
     void backPressed(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
+    	password = new Password();
+    	String p = password.getPassword();
     	
-        if(main.getPassword().equals("p"))
+        if(p.equals("p"))
         {
-        	main.switchScene("/controllers/fxml/Login.fxml");
+        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
         	main.switchScene("/controllers/fxml/HomePage.fxml");
         }

@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
+import model.Password;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
@@ -14,7 +15,9 @@ import java.io.File;
 import application.Main;
 
 public class LoginController {
-
+	
+	private Password password;
+	
     @FXML
     protected PasswordField PasswordField;
     
@@ -33,20 +36,14 @@ public class LoginController {
     public void Login(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
-    	
-        String FilePath = "src/resources/password.txt";
-        File file = new File(FilePath);
+    	password = new Password();
+    	String p = password.getPassword();
         
-        Scanner scanner = new Scanner(file);
-        String line = scanner.nextLine();
-        
-        if(line.equals("p") && PasswordField.getText().equals("p"))
+        if(p.equals("p") && PasswordField.getText().equals("p"))
         {
-        	main.setPassword(line);
-        	main.switchScene("/controllers/fxml/Profile.fxml");
+        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         }
-        
-        else if(PasswordField.getText().equals(line))
+        else if(PasswordField.getText().equals(p))
     	{
         	main.switchScene("/controllers/fxml/HomePage.fxml");
     	}
@@ -54,6 +51,5 @@ public class LoginController {
         {
         	incorrectLabel.setOpacity(1);
         }
-        scanner.close();
     }
 }
