@@ -12,7 +12,7 @@ import application.Main;
 import java.io.File;
 
 
-public class HomePageController implements SwitchInt {
+public class HomePageController {
 
 	
     @FXML
@@ -24,6 +24,7 @@ public class HomePageController implements SwitchInt {
     @FXML
     protected ListView<String> searchList;
 
+    Main main = new Main();
     
     public void searchRecs(ActionEvent event) throws IOException{
     	File directory = new File ("src/resources/recs");
@@ -41,9 +42,9 @@ public class HomePageController implements SwitchInt {
     {
     	System.out.println("clicked on " + searchList.getSelectionModel().getSelectedItem());
     	
-		switchScene("/controllers/fxml/ViewRecommendation.fxml");
+		main.switchScene("/controllers/fxml/ViewRecommendation.fxml");
 		
-		stg.setUserData(searchList.getSelectionModel().getSelectedItem());
+		main.stg.setUserData(searchList.getSelectionModel().getSelectedItem());
 	
     }
 	/**
@@ -52,7 +53,7 @@ public class HomePageController implements SwitchInt {
 	 * @throws IOException
 	 */
 	public void switchToHomePage(ActionEvent event) throws IOException {
-		switchScene("/controllers/fxml/HomePage.fxml");
+		main.switchScene("/controllers/fxml/HomePage.fxml");
 	}
 	
 	
@@ -62,7 +63,7 @@ public class HomePageController implements SwitchInt {
 	 * @throws IOException
 	 */
 	public void switchToCreateRec(ActionEvent event) throws IOException{
-		switchScene("/controllers/fxml/CreateRecommendation.fxml");
+		main.switchScene("/controllers/fxml/CreateRecommendation.fxml");
 	}
 	
 	/**
@@ -71,7 +72,7 @@ public class HomePageController implements SwitchInt {
 	 * @throws IOException
 	 */
 	public void switchToLogin(ActionEvent event) throws IOException{
-		switchScene("/controllers/fxml/Login.fxml");
+		main.switchScene("/controllers/fxml/Login.fxml");
 	}
 	
 	/**
@@ -80,7 +81,7 @@ public class HomePageController implements SwitchInt {
 	 * @throws IOException
 	 */
 	public void switchToProfile(ActionEvent event) throws IOException{
-		switchScene("/controllers/fxml/Profile.fxml");
+		main.switchScene("/controllers/fxml/Profile.fxml");
 	}
 	
 	/**
@@ -89,7 +90,7 @@ public class HomePageController implements SwitchInt {
 	 * @throws IOException
 	 */
 	public void switchToResetPassword(ActionEvent event) throws IOException{
-		switchScene("/controllers/fxml/ResetPassword.fxml");
+		main.switchScene("/controllers/fxml/ResetPassword.fxml");
 		
  	}
 }

@@ -14,7 +14,7 @@ import java.io.File;
 import application.Main;
 
 
-public class ResetPasswordController implements SwitchInt {
+public class ResetPasswordController {
 	private Password password;
 	
 	@FXML
@@ -29,6 +29,7 @@ public class ResetPasswordController implements SwitchInt {
 	@FXML
 	private PasswordField currentField;
 	
+	Main main = new Main();
 	/**
 	 * Check if password matches the one on file
 	 * @param event
@@ -42,7 +43,7 @@ public class ResetPasswordController implements SwitchInt {
         if(p.equals(currentField.getText()) && confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
 			
 			password.setPassword(confirmField.getText());
-            switchScene("/controllers/fxml/Login.fxml");
+            main.switchScene("/controllers/fxml/Login.fxml");
 		}
 		else
 		{
@@ -51,6 +52,6 @@ public class ResetPasswordController implements SwitchInt {
 	}
 	
 	public void switchToHomePage(ActionEvent event) throws IOException {
-		switchScene("/controllers/fxml/HomePage.fxml");
+		main.switchScene("/controllers/fxml/HomePage.fxml");
 	}
 }

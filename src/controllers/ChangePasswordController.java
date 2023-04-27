@@ -7,9 +7,9 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import application.Main;
 
-
-public class ChangePasswordController implements SwitchInt {
+public class ChangePasswordController {
 	private Password password;
 	
 	@FXML
@@ -28,12 +28,12 @@ public class ChangePasswordController implements SwitchInt {
 	 */
 	@FXML
 	public void confirmLogin(ActionEvent event) throws IOException{
-		
+		Main main = new Main();
 		password = new Password();
 		
 		if(confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
 			password.setPassword(confirmField.getText());
-            switchScene("/controllers/fxml/Profile.fxml");
+            main.switchScene("/controllers/fxml/Profile.fxml");
 		}
 		else
 		{

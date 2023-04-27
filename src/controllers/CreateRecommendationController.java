@@ -5,6 +5,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
+
+import application.Main;
+
 import java.sql.*;
 import java.time.LocalDate;
 
@@ -21,7 +24,7 @@ import javafx.scene.control.TextField;
 import java.io.File;
 import java.io.FileWriter;
 
-public class CreateRecommendationController implements Initializable, SwitchInt {
+public class CreateRecommendationController implements Initializable {
 	
 	
 	private String[] genderList = {"Male", "Female", "Other"};
@@ -67,7 +70,7 @@ public class CreateRecommendationController implements Initializable, SwitchInt 
     @FXML
     protected CheckComboBox<String> acaChars;
     
-     
+    Main main = new Main();
     /**
 	 * Switches to Scene1
 	 * @param event
@@ -75,7 +78,7 @@ public class CreateRecommendationController implements Initializable, SwitchInt 
 	 */
     @FXML
     void cancelBtnPressed(ActionEvent event) throws IOException{
-    	switchScene("/controllers/fxml/HomePage.fxml");
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
     
     
@@ -190,7 +193,7 @@ public class CreateRecommendationController implements Initializable, SwitchInt 
     		System.err.println(e.getMessage());
     	}
     	
-    	switchScene("/controllers/fxml/HomePage.fxml");
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
 
     /**

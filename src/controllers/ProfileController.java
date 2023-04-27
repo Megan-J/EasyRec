@@ -27,7 +27,7 @@ import application.Main;
 import dal.DbSqlite;
 
 
-public class ProfileController implements Initializable, SwitchInt {
+public class ProfileController implements Initializable {
 	private Password password;
 	
 	private Profile profile;
@@ -62,6 +62,7 @@ public class ProfileController implements Initializable, SwitchInt {
     Stage stage;
     Scene scene;
     
+    Main main = new Main();
     /**
 	 * Handles when the cancelled button is pressed
 	 * @param event
@@ -75,9 +76,9 @@ public class ProfileController implements Initializable, SwitchInt {
     	
         if(p.equals("p"))
         {
-        	switchScene("/controllers/fxml/ChangePassword.fxml");
+        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
-        	switchScene("/controllers/fxml/HomePage.fxml");
+        	main.switchScene("/controllers/fxml/HomePage.fxml");
         }
     }
 
@@ -117,9 +118,9 @@ public class ProfileController implements Initializable, SwitchInt {
 		
 		if(password.getPassword().equals("p"))
         {
-        	switchScene("/controllers/fxml/ChangePassword.fxml");
+        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
-        	switchScene("/controllers/fxml/HomePage.fxml");
+        	main.switchScene("/controllers/fxml/HomePage.fxml");
         }
 		
     }

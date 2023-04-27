@@ -6,10 +6,10 @@ import model.Password;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
-
+import application.Main;
 import java.io.IOException;
 
-public class LoginController implements SwitchInt{
+public class LoginController{
 	
 	private Password password;
 	
@@ -21,6 +21,8 @@ public class LoginController implements SwitchInt{
     
     @FXML
     protected Button loginBtn;
+    
+    Main main = new Main();
     
 	/**
 	 * Checks if the default password is submitted
@@ -35,11 +37,11 @@ public class LoginController implements SwitchInt{
         
         if(p.equals("p") && PasswordField.getText().equals("p"))
         {
-        	switchScene("/controllers/fxml/ChangePassword.fxml");
+        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         }
         else if(PasswordField.getText().equals(p))
     	{
-        	switchScene("/controllers/fxml/HomePage.fxml");
+        	main.switchScene("/controllers/fxml/HomePage.fxml");
     	}
         else
         {
