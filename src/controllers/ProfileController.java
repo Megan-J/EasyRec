@@ -1,6 +1,5 @@
 package controllers;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,17 +13,13 @@ import model.Profile;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
 
 import application.Main;
-import dal.DbSqlite;
 
 
 public class ProfileController implements Initializable {
@@ -78,7 +73,7 @@ public class ProfileController implements Initializable {
         {
         	main.switchScene("/controllers/fxml/ChangePassword.fxml");
         } else {
-        	main.switchScene("/controllers/fxml/HomePage.fxml");
+        	main.switchScene("/controllers/fxml/ViewProfile.fxml");
         }
     }
 
@@ -93,21 +88,29 @@ public class ProfileController implements Initializable {
     	Main main = new Main();
     	password = new Password();
     	
-    	String semesters = "";
-		for(String x: semestersField.getCheckModel().getCheckedItems())
-		{
-			semesters += x + ", ";
-		}
-		String courses = "";
-		for(String x: coursesField.getCheckModel().getCheckedItems())
-		{
-			courses += x + ", ";
-		}
 		String name = nameField.getText();
 		String title = titleField.getText();
 		String school = schoolDepField.getText();
 		String email = emailField.getText();
 		String phone = phoneField.getText();
+
+		String semesters = "";
+		ObservableList<String> semesterList = semestersField.getCheckModel().getCheckedItems();
+		for (int i = 0; i < semesterList.size()- 1; i++)
+		{
+			String checked = semesterList.get(i);
+			semesters = semesters + checked + ", ";
+		}
+		semesters = semesters + semesterList.get(semesterList.size()-1);
+		
+		String courses = "";
+		ObservableList<String> courseList = coursesField.getCheckModel().getCheckedItems();
+		for (int i = 0; i < courseList.size() - 1; i++)
+		{
+			String checked = courseList.get(i);
+			courses = courses + checked + ", ";
+		}
+		courses = courses + courseList.get(courseList.size()-1);
 		try {
 			profile.setProfile(name, title, school, email, phone, semesters, courses);
 		}
@@ -133,45 +136,12 @@ public class ProfileController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		profile = new Profile();
 		try {
-			ArrayList<String> profileAttributes = profile.getProfile();
-			String name = profileAttributes.get(0);
-			String title = profileAttributes.get(1);
-			String schoolDep = profileAttributes.get(2);
-			String email = profileAttributes.get(3);
-			String phone = profileAttributes.get(4);
-			String sem = profileAttributes.get(5);
-			String course = profileAttributes.get(6);
-			
-			nameField.setText(name);
-			titleField.setText(title);
-			schoolDepField.setText(schoolDep);
-			emailField.setText(email);
-			phoneField.setText(phone);
-			
+			semestersField.getItems().addAll(profile.getSemesters());
+			coursesField.getItems().addAll(profile.getCourses());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
-		final ObservableList<String> courses = FXCollections.observableArrayList();
-
-    	courses.add("CS151: Object-Oriented Design");
-    	courses.add("CS166: Information Security");
-    	courses.add("CS154: Theory of Computation");
-    	courses.add("CS160: Software Engineering");
-    	courses.add("CS256: Cryptography");
-    	courses.add("CS146: Data Structures and Algorithms");
-    	courses.add("CS152: Programming Language Paradigm");
-    	
-    	final ObservableList<String> semesters = FXCollections.observableArrayList();
-
-    	semesters.add("Fall");
-    	semesters.add("Summer");
-    	semesters.add("Spring");
-    	
-    	semestersField.getItems().addAll(semesters);
-    	coursesField.getItems().addAll(courses);
-		
+		} 
 	}
     
 

@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import dal.DbSqlite;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Profile {
 	
@@ -20,7 +22,10 @@ public class Profile {
 	private String email;
 	private String phone;
 	private String sem;
-	private String courses;
+	private String coursesSelect;
+	
+	private ObservableList<String> semesters = FXCollections.observableArrayList();
+	private ObservableList<String> courses = FXCollections.observableArrayList();
 	
 	public Profile()
 	{
@@ -29,13 +34,13 @@ public class Profile {
 	
 	public ArrayList<String> getProfile() throws SQLException
 	{
-		name = getData(dal.getConnection(), "Name", "Profile");
-		title = getData(dal.getConnection(), "Title", "Profile");
-		schoolDep = getData(dal.getConnection(), "SchoolName", "Profile");
-		email = getData(dal.getConnection(), "Email", "Profile");
-		phone = getData(dal.getConnection(), "Phone", "Profile");
-		sem = getData(dal.getConnection(), "SemestersTaught", "Profile");
-		courses = getData(dal.getConnection(), "CoursesTaught", "Profile");
+		name = getData(dal.getConnection(), "Name", "Profile").get(0);
+		title = getData(dal.getConnection(), "Title", "Profile").get(0);
+		schoolDep = getData(dal.getConnection(), "SchoolName", "Profile").get(0);
+		email = getData(dal.getConnection(), "Email", "Profile").get(0);
+		phone = getData(dal.getConnection(), "Phone", "Profile").get(0);
+		sem = getData(dal.getConnection(), "SemestersTaught", "Profile").get(0);
+		coursesSelect = getData(dal.getConnection(), "CoursesTaught", "Profile").get(0);
 		
 		profileData.add(name);
 		profileData.add(title);
@@ -43,7 +48,7 @@ public class Profile {
 		profileData.add(schoolDep);
 		profileData.add(phone);
 		profileData.add(sem);
-		profileData.add(courses);
+		profileData.add(coursesSelect);
 		
 		return profileData;
 	}
@@ -76,8 +81,23 @@ public class Profile {
 		}
 	}
 	
-	private String getData(Connection conn, String column, String table) throws SQLException
+	public ObservableList<String> getSemesters() throws SQLException
 	{
+		ArrayList<String> semester = getData(dal.getConnection(), "Semester", "Semesters");
+		semesters.addAll(semester);
+		return semesters;
+	}
+	
+	public ObservableList<String> getCourses() throws SQLException
+	{
+		ArrayList<String> courseList = getData(dal.getConnection(), "Course", "Courses");
+		courses.addAll(courseList);
+		return courses;
+	}
+	
+	private ArrayList<String> getData(Connection conn, String column, String table) throws SQLException
+	{
+			ArrayList<String> dataValues = new ArrayList<>();
 			String data = "";
 			String select = "SELECT ";
 			select = select + column + " FROM ";
@@ -88,9 +108,10 @@ public class Profile {
 			while (rs.next())
 			{
 				data = rs.getString(column);
+				dataValues.add(data);
 			}
 	
-		return data;
+		return dataValues;
 	}
 	
 //	public static void main (String args[]) throws SQLException

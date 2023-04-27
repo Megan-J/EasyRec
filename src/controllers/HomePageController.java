@@ -81,7 +81,7 @@ public class HomePageController {
 	 * @throws IOException
 	 */
 	public void switchToProfile(ActionEvent event) throws IOException{
-		main.switchScene("/controllers/fxml/Profile.fxml");
+		main.switchScene("/controllers/fxml/ViewProfile.fxml");
 	}
 	
 	/**
