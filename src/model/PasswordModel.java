@@ -8,17 +8,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import dal.DbSqlite;
 
-public class Password {
+public class PasswordModel {
 	private DbSqlite dal = DbSqlite.getInstance(); //instance of database connection
 	
 	private String passwordStr; //private instance variable that stores the User's password
 	
-	public Password() throws IOException //constructor for Password object that Controller will use to manipulate password
+	/**
+	 * Constructor for Password object that 
+	 * Controller will use to manipulate password
+	 * @throws SQLException
+	 */
+	public PasswordModel() throws IOException
 	{
 		dal = DbSqlite.getInstance();
 	}
 	
-	public String getPassword() throws SQLException //getter method for password
+	
+	/**
+	 * Getter method for password
+	 * @throws SQLException
+	 */
+	public String getPassword() throws SQLException
 	{
 		String select = "SELECT PasswordStr FROM Password";
 		Connection conn = dal.getConnection();
@@ -32,7 +42,12 @@ public class Password {
 		return passwordStr;
 	}
 	
-	public void setPassword(String p) throws SQLException //sets the password to String param p
+	/**
+	 * Sets the password to String param p
+	 * @param p
+	 * @throws SQLException
+	 */
+	public void setPassword(String p) throws SQLException
 	{
 		Connection conn = dal.getConnection();
 		String currentPass = getPassword();

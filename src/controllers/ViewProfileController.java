@@ -8,8 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Password;
-import model.Profile;
+import model.PasswordModel;
+import model.ProfileModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +21,7 @@ import application.Main;
 
 
 public class ViewProfileController implements Initializable {
-	private Profile profile;
+	private ProfileModel profile;
 	
     @FXML
     private Text nameField;
@@ -84,7 +84,7 @@ public class ViewProfileController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		profile = new Profile();
+		profile = new ProfileModel();
 		try {
 			ArrayList<String> profileAttributes = profile.getProfile();
 			String name = profileAttributes.get(0);

@@ -2,7 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
-import model.Password;
+import model.PasswordModel;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 
@@ -16,7 +16,7 @@ import application.Main;
 
 
 public class ResetPasswordController {
-	private Password password;
+	private PasswordModel password;
 	
 	@FXML
 	private PasswordField newField;
@@ -39,7 +39,7 @@ public class ResetPasswordController {
 	 */
 	@FXML
 	public void changeLogin(ActionEvent event) throws IOException, SQLException{
-		password = new Password();
+		password = new PasswordModel();
 		String p = password.getPassword();
         
         if(p.equals(currentField.getText()) && confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
@@ -62,7 +62,7 @@ public class ResetPasswordController {
 	}
 	
 	public void switchToHomePage(ActionEvent event) throws IOException, SQLException {
-		password = new Password();
+		password = new PasswordModel();
 		String p = password.getPassword();
 		if (p.equals("p"))
 		{

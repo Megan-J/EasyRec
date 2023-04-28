@@ -2,7 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
-import model.Password;
+import model.PasswordModel;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 public class LoginController{
 	
-	private Password password;
+	private PasswordModel password;
 	
     @FXML
     protected PasswordField PasswordField;
@@ -34,7 +34,7 @@ public class LoginController{
     @FXML
     public void login(ActionEvent event) throws IOException, SQLException{
     	
-    	password = new Password();
+    	password = new PasswordModel();
     	String p = password.getPassword();
         
         if(p.equals("p") && PasswordField.getText().equals("p"))

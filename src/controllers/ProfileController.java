@@ -8,8 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Password;
-import model.Profile;
+import model.PasswordModel;
+import model.ProfileModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,7 +23,7 @@ import application.Main;
 
 
 public class ProfileController implements Initializable {
-	private Profile profile;
+	private ProfileModel profile;
 	
     @FXML
     private TextField nameField;
@@ -74,8 +74,7 @@ public class ProfileController implements Initializable {
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException{
     	
-    	Main main = new Main();
-    	new Password();
+    	new PasswordModel();
     	
 		String name = nameField.getText();
 		String title = titleField.getText();
@@ -116,7 +115,7 @@ public class ProfileController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		profile = new Profile();
+		profile = new ProfileModel();
 		try {
 			semestersField.getItems().addAll(profile.getSemesters());
 			coursesField.getItems().addAll(profile.getCourses());

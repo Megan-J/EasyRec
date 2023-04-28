@@ -2,9 +2,8 @@
 /application.css
 /application/
 /controllers/
-/database/
-/resources/
-/mvc/
-/model/
-/dak/
 /dal/
+/database/
+/model/
+/resources/
+/models/

@@ -11,7 +11,7 @@ import dal.DbSqlite;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Profile {
+public class ProfileModel {
 	
 	private DbSqlite dal = DbSqlite.getInstance();
 	private ArrayList<String> profileData = new ArrayList<>();
@@ -27,20 +27,28 @@ public class Profile {
 	private ObservableList<String> semesters = FXCollections.observableArrayList();
 	private ObservableList<String> courses = FXCollections.observableArrayList();
 	
-	public Profile()
+	/**
+	 * Constructor
+	 */
+	public ProfileModel()
 	{
 		 dal = DbSqlite.getInstance();
 	}
 	
+	
+	/**
+	 * Gets profile data
+	 * @throws SQLException
+	 */
 	public ArrayList<String> getProfile() throws SQLException
 	{
-		name = getData(dal.getConnection(), "Name", "Profile").get(0);
-		title = getData(dal.getConnection(), "Title", "Profile").get(0);
-		schoolDep = getData(dal.getConnection(), "SchoolName", "Profile").get(0);
-		email = getData(dal.getConnection(), "Email", "Profile").get(0);
-		phone = getData(dal.getConnection(), "Phone", "Profile").get(0);
-		sem = getData(dal.getConnection(), "SemestersTaught", "Profile").get(0);
-		coursesSelect = getData(dal.getConnection(), "CoursesTaught", "Profile").get(0);
+		name = getProfileData(dal.getConnection(), "Name", "Profile").get(0);
+		title = getProfileData(dal.getConnection(), "Title", "Profile").get(0);
+		schoolDep = getProfileData(dal.getConnection(), "SchoolName", "Profile").get(0);
+		email = getProfileData(dal.getConnection(), "Email", "Profile").get(0);
+		phone = getProfileData(dal.getConnection(), "Phone", "Profile").get(0);
+		sem = getProfileData(dal.getConnection(), "SemestersTaught", "Profile").get(0);
+		coursesSelect = getProfileData(dal.getConnection(), "CoursesTaught", "Profile").get(0);
 		
 		profileData.add(name);
 		profileData.add(title);
@@ -52,7 +60,14 @@ public class Profile {
 		
 		return profileData;
 	}
-	public void setProfile(String name, String title, String schoolDep, String email, String phone, String sem, String courses)
+	
+	
+	/**
+	 * Stores information given in profile to database
+	 * @param name, title, school department, email, phone, semester, courses
+	 * @throws SQLException
+	 */
+	public void setProfile(String name, String title, String schoolDep, String email, String phone, String sem, String courses) throws SQLException
 	{
 		try {
 			Connection conn = dal.getConnection();
@@ -81,21 +96,34 @@ public class Profile {
 		}
 	}
 	
+	/**
+	 * Get the semesters in database
+	 * @throws SQLException
+	 */
 	public ObservableList<String> getSemesters() throws SQLException
 	{
-		ArrayList<String> semester = getData(dal.getConnection(), "Semester", "Semesters");
+		ArrayList<String> semester = getProfileData(dal.getConnection(), "Semester", "Semesters");
 		semesters.addAll(semester);
 		return semesters;
 	}
 	
+	/**
+	 * Get the semesters in database
+	 * @throws SQLException
+	 */
 	public ObservableList<String> getCourses() throws SQLException
 	{
-		ArrayList<String> courseList = getData(dal.getConnection(), "Course", "Courses");
+		ArrayList<String> courseList = getProfileData(dal.getConnection(), "Course", "Courses");
 		courses.addAll(courseList);
 		return courses;
 	}
 	
-	private ArrayList<String> getData(Connection conn, String column, String table) throws SQLException
+	/**
+	 * Gets data from the database
+	 * @param connection, column, table
+	 * @throws SQLException
+	 */
+	private ArrayList<String> getProfileData(Connection conn, String column, String table) throws SQLException
 	{
 			ArrayList<String> dataValues = new ArrayList<>();
 			String data = "";
@@ -114,20 +142,4 @@ public class Profile {
 		return dataValues;
 	}
 	
-//	public static void main (String args[]) throws SQLException
-//	{
-////		ArrayList<String> dataSet = new ArrayList<>();
-////		Connection conn = dal.getConnection();
-////		String name = getData(conn, "Name", "Profile");
-////		System.out.println(name);
-////		
-////		try {
-////			dataSet = getProfile();
-////		} catch (SQLException e) {
-////			// TODO Auto-generated catch block
-////			e.printStackTrace();
-////		}
-////		System.out.println(dataSet.toString());
-////		setProfile("Ahmad", "Professor", "SJSU", "@", "510", "Fall, ", "CS151: Object-Oriented Design");
-//	}
 }

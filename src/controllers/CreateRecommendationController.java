@@ -71,6 +71,7 @@ public class CreateRecommendationController implements Initializable {
     protected CheckComboBox<String> acaChars;
     
     Main main = new Main();
+    
     /**
 	 * Switches to Scene1
 	 * @param event
@@ -210,6 +211,22 @@ public class CreateRecommendationController implements Initializable {
 		final ObservableList<String> perChars = FXCollections.observableArrayList();
 		final ObservableList<String> courses = FXCollections.observableArrayList();
 
+    	perCharsBox.getItems().addAll(perChars);
+    	acaChars.getItems().addAll(acadChars);
+    	addCourses.getItems().addAll(courses);
+	}
+	
+	
+	
+	/*public void initialize(URL location, ResourceBundle resources) {
+    	gender.getItems().addAll(genderList);
+    	program.getItems().addAll(programList);
+    	firstSemester.getItems().addAll(semesterList);
+    	
+    	final ObservableList<String> acadChars = FXCollections.observableArrayList();
+		final ObservableList<String> perChars = FXCollections.observableArrayList();
+		final ObservableList<String> courses = FXCollections.observableArrayList();
+
     	
     	acadChars.add("submitted well-written assignments");
     	acadChars.add("participated in all of my class activities");
@@ -237,6 +254,6 @@ public class CreateRecommendationController implements Initializable {
     	addCourses.getItems().addAll(courses);
     	
     	
-	}
+	}*/
 
 }
