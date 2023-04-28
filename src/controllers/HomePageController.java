@@ -1,9 +1,12 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
@@ -12,7 +15,8 @@ import application.Main;
 import java.io.File;
 
 
-public class HomePageController {
+
+public class HomePageController implements Initializable{
 
 	
     @FXML
@@ -40,11 +44,13 @@ public class HomePageController {
     
     public void handleMouseClick(MouseEvent event) throws IOException
     {
-    	System.out.println("clicked on " + searchList.getSelectionModel().getSelectedItem());
-    	
-		main.switchScene("/controllers/fxml/ViewRecommendation.fxml");
-		
-		main.stg.setUserData(searchList.getSelectionModel().getSelectedItem());
+    	if(searchList.getSelectionModel().getSelectedItem() != null) {
+	    	System.out.println("clicked on " + searchList.getSelectionModel().getSelectedItem());
+	    	
+			CommonLibrary.recTitle = searchList.getSelectionModel().getSelectedItem();
+	    	
+			main.switchScene("/controllers/fxml/ViewRecommendation.fxml");
+    	}
 	
     }
 	/**
@@ -93,4 +99,15 @@ public class HomePageController {
 		main.switchScene("/controllers/fxml/ResetPassword.fxml");
 		
  	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+    	File directory = new File ("src/resources/recs");
+    	String contents[] = directory.list();
+    	searchList.getItems().clear();
+    	for(String i: contents) {
+			searchList.getItems().add(i);
+			
+    	}
+	}
 }

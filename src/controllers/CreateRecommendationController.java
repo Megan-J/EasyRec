@@ -236,6 +236,7 @@ public class CreateRecommendationController implements Initializable {
     	acaChars.getItems().addAll(acadChars);
     	addCourses.getItems().addAll(courses);
     	
+    	
 	}
 
 }

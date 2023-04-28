@@ -6,14 +6,15 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
+
+import application.Main;
 
 public class ViewRecommendationController implements Initializable{
 
@@ -25,38 +26,39 @@ public class ViewRecommendationController implements Initializable{
 
     @FXML
     private Button saveRec;
-    
+
+    Main main = new Main();
     
     
     @FXML
-    void openEditMenu(ActionEvent event) {
+    void openEditMenu(ActionEvent event) throws IOException {
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
     	
     }
 
     @FXML
-    void saveRec(ActionEvent event) {
-		
-    	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		String fileName = (String)stage.getUserData();
-		String line = "";
-		
-		File file = new File("src/resources/recs/" + fileName);
-		try {
-			Scanner scanner = new Scanner(file);
-			line = scanner.nextLine();
-			scanner.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		
-		textBox.setText(line);
-		
+    void saveRec(ActionEvent event) throws IOException {
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
 	}
     
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
-
+		String fileName = CommonLibrary.recTitle;
+		String line = "";
+		
+		File file = new File("src/resources/recs/" + fileName);
+		try {
+			Scanner scanner = new Scanner(file);
+			while(scanner.hasNextLine())
+			{
+				line = scanner.nextLine();
+				textBox.appendText(line + "\n");
+				
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }
