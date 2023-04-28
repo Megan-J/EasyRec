@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.File;
@@ -34,16 +35,25 @@ public class ResetPasswordController {
 	 * Check if password matches the one on file
 	 * @param event
 	 * @throws IOException
+	 * @throws SQLException 
 	 */
 	@FXML
-	public void changeLogin(ActionEvent event) throws IOException{
+	public void changeLogin(ActionEvent event) throws IOException, SQLException{
 		password = new Password();
 		String p = password.getPassword();
         
         if(p.equals(currentField.getText()) && confirmField.getText().length() > 0 && newField.getText().equals(confirmField.getText())) {
 			
 			password.setPassword(confirmField.getText());
-            main.switchScene("/controllers/fxml/Login.fxml");
+			p = password.getPassword();
+			if (p.equals("p"))
+	        {
+	        	main.switchScene("/controllers/fxml/Login.fxml");
+	        }
+			else
+			{
+				main.switchScene("/controllers/fxml/Homepage.fxml");
+			}
 		}
 		else
 		{
@@ -51,7 +61,16 @@ public class ResetPasswordController {
 		}
 	}
 	
-	public void switchToHomePage(ActionEvent event) throws IOException {
-		main.switchScene("/controllers/fxml/HomePage.fxml");
+	public void switchToHomePage(ActionEvent event) throws IOException, SQLException {
+		password = new Password();
+		String p = password.getPassword();
+		if (p.equals("p"))
+		{
+			main.switchScene("/controllers/fxml/Login.fxml");
+		}
+		else
+		{
+			main.switchScene("/controllers/fxml/Homepage.fxml");
+		}
 	}
 }

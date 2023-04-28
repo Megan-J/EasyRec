@@ -23,8 +23,6 @@ import application.Main;
 
 
 public class ProfileController implements Initializable {
-	private Password password;
-	
 	private Profile profile;
 	
     @FXML
@@ -65,16 +63,7 @@ public class ProfileController implements Initializable {
 	 */
     @FXML
     void backPressed(ActionEvent event) throws IOException{
-    	
-    	password = new Password();
-    	String p = password.getPassword();
-    	
-        if(p.equals("p"))
-        {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
-        } else {
-        	main.switchScene("/controllers/fxml/ViewProfile.fxml");
-        }
+        main.switchScene("/controllers/fxml/ViewProfile.fxml");
     }
 
     /**
@@ -86,7 +75,7 @@ public class ProfileController implements Initializable {
     void saveButtonPressed(ActionEvent event) throws IOException{
     	
     	Main main = new Main();
-    	password = new Password();
+    	new Password();
     	
 		String name = nameField.getText();
 		String title = titleField.getText();
@@ -118,13 +107,6 @@ public class ProfileController implements Initializable {
 		{
 			System.err.println(e.getMessage());
 		}
-		
-		if(password.getPassword().equals("p"))
-        {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
-        } else {
-        	main.switchScene("/controllers/fxml/HomePage.fxml");
-        }
 		
     }
 

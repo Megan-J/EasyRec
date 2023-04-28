@@ -21,8 +21,6 @@ import application.Main;
 
 
 public class ViewProfileController implements Initializable {
-	private Password password;
-	
 	private Profile profile;
 	
     @FXML
@@ -63,16 +61,7 @@ public class ViewProfileController implements Initializable {
 	 */
     @FXML
     void backPressed(ActionEvent event) throws IOException{
-    	
-    	password = new Password();
-    	String p = password.getPassword();
-    	
-        if(p.equals("p"))
-        {
-        	main.switchScene("/controllers/fxml/ChangePassword.fxml");
-        } else {
-        	main.switchScene("/controllers/fxml/HomePage.fxml");
-        }
+        main.switchScene("/controllers/fxml/HomePage.fxml");   
     }
 
     /**
