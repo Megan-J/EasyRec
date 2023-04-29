@@ -10,6 +10,8 @@ import application.Main;
 
 import java.sql.*;
 import java.time.LocalDate;
+import model.PasswordModel; 
+import model.RecommendationModel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,9 +28,11 @@ import java.io.FileWriter;
 
 public class CreateRecommendationController implements Initializable {
 	
+	private RecommendationModel recommendationModel;
+	
 	
 	private String[] genderList = {"Male", "Female", "Other"};
-	private String[] programList = {"MS", "MBA", "PhD"};
+	private String[] programList = {"Master of Science", "Master of Business Administration", "Doctor of Philosophy"};
 	private String[] semesterList = {"Spring", "Fall", "Summer"};
 
     @FXML
@@ -90,6 +94,9 @@ public class CreateRecommendationController implements Initializable {
 	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
+    	
+    	Main main = new Main();
+    	new PasswordModel();
 
 		LocalDate dateVal =	date.getValue();
 		String dateString = dateVal.toString();
@@ -127,8 +134,6 @@ public class CreateRecommendationController implements Initializable {
 		{
 			acadChars += x + ", ";
 		}
-
-
 
 		File newRec = new File("src/resources/recs/" + lastName.getText());
 		boolean created = newRec.createNewFile();
@@ -203,17 +208,19 @@ public class CreateRecommendationController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-    	gender.getItems().addAll(genderList);
-    	program.getItems().addAll(programList);
-    	firstSemester.getItems().addAll(semesterList);
+		
+		recommendationModel = new RecommendationModel();
+		
+		try {
+	    	perCharsBox.getItems().addAll(recommendationModel.getPersonalChars());
+	    	acaChars.getItems().addAll(recommendationModel.getAcademicChars());
+			
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
     	
-    	final ObservableList<String> acadChars = FXCollections.observableArrayList();
-		final ObservableList<String> perChars = FXCollections.observableArrayList();
-		final ObservableList<String> courses = FXCollections.observableArrayList();
-
-    	perCharsBox.getItems().addAll(perChars);
-    	acaChars.getItems().addAll(acadChars);
-    	addCourses.getItems().addAll(courses);
 	}
 	
 	

@@ -95,19 +95,20 @@ public class RecommendationModel {
 		
 	}
 	
-	public ObservableList<String> personalChars() throws SQLException
+	public ObservableList<String> getPersonalChars() throws SQLException
 	{
 		ArrayList<String> personalChar = getRecommendationData(dal.getConnection(), "Personal Characteristic", "Personal Characteristics");
 		personalChars.addAll(personalChar);
 		return personalChars;
 	}
 	
-	public ObservableList<String> academicChars() throws SQLException
+	public ObservableList<String> getAcademicChars() throws SQLException
 	{
 		ArrayList<String> academicChar = getRecommendationData(dal.getConnection(), "Academic Characteristic", "Academic Characteristics");
 		academicChars.addAll(academicChar);
 		return academicChars;
 	}
+	
 	
 	private ArrayList<String> getRecommendationData(Connection conn, String column, String table) throws SQLException
 	{
