@@ -108,7 +108,7 @@ public class ProfileModel {
 	}
 	
 	/**
-	 * Get the semesters in database
+	 * Get the courses in database
 	 * @throws SQLException
 	 */
 	public ObservableList<String> getCourses() throws SQLException

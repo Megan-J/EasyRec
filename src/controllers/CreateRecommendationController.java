@@ -10,11 +10,10 @@ import application.Main;
 
 import java.sql.*;
 import java.time.LocalDate;
-import model.PasswordModel; 
+import model.PasswordModel;
+import model.ProfileModel;
 import model.RecommendationModel;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,13 +28,8 @@ import java.io.FileWriter;
 public class CreateRecommendationController implements Initializable {
 	
 	private RecommendationModel recommendationModel;
-	
-	
-	private String[] genderList = {"Male", "Female", "Other"};
-	private String[] programList = {"Master of Science", "Master of Business Administration", "Doctor of Philosophy"};
-	private String[] semesterList = {"Spring", "Fall", "Summer"};
-
-    @FXML
+	private ProfileModel profileModel;
+	@FXML
     protected Button submit;
 
     @FXML
@@ -153,17 +147,19 @@ public class CreateRecommendationController implements Initializable {
 				firstName.getText() + " earned an A from this tough course, and this shows how knowledgeable and "
 				+ "hard working " + pronoun.toLowerCase() + " is.\n\n"
 				
-				+ pronoun + " also earned " + " from my " + "course.\n\n"
+				+ pronoun + " also earned " + " from my " + "course.\n\n" 
 				
-				+ firstName.getText() 
+				+ "Furthermore, I Noticed from the term project result, " + pronoun.toLowerCase() + "developed leadership, time management, and problem-solving skills."
+				+ pronoun.toLowerCase() + "worked effectively with the team members and delegated tasks appropriately. They were able to deliver a successful project in a timely fashion." 
 				
-				
+				+ "I believe that " + firstName.getText() + "has the capacity to excel at higher education program and this is my pleasure to highly recommend him. \n"
 				
 				+ "Please do not hesitate to contact me with further questions.\n\n\n\n"
 				
+				
 				+ "Very Respectfully,\n\n"
 	
-				
+				 
 				);
 				
 		
@@ -206,61 +202,25 @@ public class CreateRecommendationController implements Initializable {
 	 * Adds information to the database
 	 * @param URL, ResourceBundle
 	 */
-    /*
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		recommendationModel = new RecommendationModel();
 		
 		try {
+			gender.getItems().addAll(recommendationModel.getGenders());
+			program.getItems().addAll(recommendationModel.getPrograms());
+			firstSemester.getItems().addAll(recommendationModel.getSemesters());
+			
 	    	perCharsBox.getItems().addAll(recommendationModel.getPersonalChars());
 	    	acaChars.getItems().addAll(recommendationModel.getAcademicChars());
+	    	addCourses.getItems().addAll(recommendationModel.getCourses());
 			
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-    	
-	}
-	*/
-	
-	
-	public void initialize(URL location, ResourceBundle resources) {
-    	gender.getItems().addAll(genderList);
-    	program.getItems().addAll(programList);
-    	firstSemester.getItems().addAll(semesterList);
-    	
-    	final ObservableList<String> acadChars = FXCollections.observableArrayList();
-		final ObservableList<String> perChars = FXCollections.observableArrayList();
-		final ObservableList<String> courses = FXCollections.observableArrayList();
-
-    	
-    	acadChars.add("submitted well-written assignments");
-    	acadChars.add("participated in all of my class activities");
-    	acadChars.add("worked hard");
-    	acadChars.add("was very well prepared for every exam and assignment");
-    	acadChars.add("picked up new skills very quickly");
-    	acadChars.add("was able to excel academically at the top of my class");
-    	
-    	perChars.add("very passionate");
-    	perChars.add("very enthusiastic");
-    	perChars.add("punctual");
-    	perChars.add("attentive");
-    	perChars.add("polite");
-    	
-    	courses.add("CS151: Object-Oriented Design");
-    	courses.add("CS166: Information Security");
-    	courses.add("CS154: Theory of Computation");
-    	courses.add("CS160: Software Engineering");
-    	courses.add("CS256: Cryptography");
-    	courses.add("CS146: Data Structures and Algorithms");
-    	courses.add("CS152: Programming Language Paradigm");
-
-    	perCharsBox.getItems().addAll(perChars);
-    	acaChars.getItems().addAll(acadChars);
-    	addCourses.getItems().addAll(courses);
-    	
     	
 	}
 }

@@ -18,7 +18,11 @@ public class RecommendationModel {
 	
 	private ObservableList<String> personalChars = FXCollections.observableArrayList();
 	private ObservableList<String> academicChars = FXCollections.observableArrayList();
+	private ObservableList<String> programs = FXCollections.observableArrayList();
+	private ObservableList<String> genders = FXCollections.observableArrayList();
 	
+	private ObservableList<String> courses = FXCollections.observableArrayList();
+	private ObservableList<String> semesters = FXCollections.observableArrayList();
 	/**
 	 * Constructor
 	 */
@@ -69,18 +73,49 @@ public class RecommendationModel {
 	
 	public ObservableList<String> getPersonalChars() throws SQLException
 	{
-		ArrayList<String> personalChar = getRecommendationData(dal.getConnection(), "Personal Characteristic", "Personal Characteristics");
+		ArrayList<String> personalChar = getRecommendationData(dal.getConnection(), "PersonalCharacteristic", "PersonalCharacteristics");
 		personalChars.addAll(personalChar);
 		return personalChars;
 	}
 	
 	public ObservableList<String> getAcademicChars() throws SQLException
 	{
-		ArrayList<String> academicChar = getRecommendationData(dal.getConnection(), "Academic Characteristic", "Academic Characteristics");
+		ArrayList<String> academicChar = getRecommendationData(dal.getConnection(), "AcademicCharacteristic", "AcademicCharacteristics");
 		academicChars.addAll(academicChar);
 		return academicChars;
 	}
 	
+	public ObservableList<String> getPrograms() throws SQLException
+	{
+		ArrayList<String> program = getRecommendationData(dal.getConnection(), "Program", "Programs");
+		programs.addAll(program);
+		return programs;
+	}
+	
+	public ObservableList<String> getGenders() throws SQLException
+	{
+		ArrayList<String> gender = getRecommendationData(dal.getConnection(), "Gender", "Genders");
+		genders.addAll(gender);
+		return genders;
+	}
+	
+	public ObservableList<String> getSemesters() throws SQLException
+	{
+		ArrayList<String> semester = getRecommendationData(dal.getConnection(), "Semester", "Semesters");
+		semesters.addAll(semester);
+		return semesters;
+	}
+	
+	/**
+	 * Get the courses in database
+	 * @throws SQLException
+	 */
+	public ObservableList<String> getCourses() throws SQLException
+	{
+		ArrayList<String> courseList = getRecommendationData(dal.getConnection(), "Course", "Courses");
+		courses.addAll(courseList);
+		return courses;
+	}
 	
 	private ArrayList<String> getRecommendationData(Connection conn, String column, String table) throws SQLException
 	{

@@ -14,7 +14,6 @@ import model.ProfileModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
@@ -106,7 +105,7 @@ public class ProfileController implements Initializable {
 		{
 			System.err.println(e.getMessage());
 		}
-		
+		main.switchScene("/controllers/fxml/ViewProfile.fxml");
     }
 
     /**
