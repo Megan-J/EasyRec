@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
@@ -28,7 +29,7 @@ import java.io.FileWriter;
 public class CreateRecommendationController implements Initializable {
 	
 	private RecommendationModel recommendationModel;
-	private ProfileModel profileModel;
+	private ProfileModel profileModel = new ProfileModel();
 	@FXML
     protected Button submit;
 
@@ -85,9 +86,10 @@ public class CreateRecommendationController implements Initializable {
 	 * Submits recommendation to database
 	 * @param event
 	 * @throws IOException
+     * @throws SQLException 
 	 */
     @FXML
-    void submitRecommendation(ActionEvent event) throws IOException{
+    void submitRecommendation(ActionEvent event) throws IOException, SQLException{
     	
     	Main main = new Main();
     	new PasswordModel();
@@ -110,6 +112,12 @@ public class CreateRecommendationController implements Initializable {
 			pronoun = "They";
 		}
 		
+		ArrayList<String> profileData = profileModel.getProfile();
+		String profName = profileData.get(0);
+		String profTitle = profileData.get(1);
+		String profDep = profileData.get(2);
+		String profEmail = profileData.get(3);
+		String profPhone = profileData.get(4);
 		
 		String courses = "";
 		for(String x : addCourses.getCheckModel().getCheckedItems())
@@ -159,7 +167,13 @@ public class CreateRecommendationController implements Initializable {
 				
 				+ "Very Respectfully,\n\n"
 	
-				 
+				+ profName + "\n\n"
+				
+				+ profTitle + "\n"
+				
+				+ profDep + "\n"
+				
+				+ profPhone + "\n"
 				);
 				
 		
