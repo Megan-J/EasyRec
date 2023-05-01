@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import org.controlsfx.control.CheckComboBox;
@@ -26,9 +27,8 @@ import javafx.scene.control.TextField;
 import java.io.File;
 import java.io.FileWriter;
 
-public class CreateRecommendationController implements Initializable {
+public class EditRecommendationController implements Initializable {
 	
-	private RecommendationModel recommendationModel;
 	
 	
 	private String[] genderList = {"Male", "Female", "Other"};
@@ -74,6 +74,9 @@ public class CreateRecommendationController implements Initializable {
     @FXML
     protected CheckComboBox<String> acaChars;
     
+    @FXML
+    protected Button deleteRec;
+    
     Main main = new Main();
     
     /**
@@ -86,6 +89,33 @@ public class CreateRecommendationController implements Initializable {
     	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
     
+    /**
+	 * Deletes Selected Recommendation
+	 * @param event
+	 * @throws IOException
+	 */
+    @FXML
+    void executeDeleteRec(ActionEvent event) throws IOException{
+    	File toDelete = new File("src/resources/recs/" + CommonLibrary.recTitle);
+    	toDelete.delete();
+    	
+    	try {
+    	String url = "jdbc:sqlite:src/database/recommendation.db";
+		Connection conn = DriverManager.getConnection(url);
+		
+		String deleteQuery = "DELETE FROM Recommendation WHERE LastName = ?";
+		PreparedStatement deleteSt = conn.prepareStatement(deleteQuery);
+		deleteSt.setString(1, CommonLibrary.recTitle);
+		deleteSt.execute();
+		main.switchScene("/controllers/fxml/HomePage.fxml");
+    	}
+    	catch(Exception e)
+    	{
+    		System.err.println(e.getMessage());
+    	}
+    	
+    }
+    
     
     /**
 	 * Submits recommendation to database
@@ -94,6 +124,14 @@ public class CreateRecommendationController implements Initializable {
 	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException{
+    	
+    	if(!firstName.getText().equals(null) && !lastName.getText().equals(null) && !gender.getValue().equals(null)
+    			&& !program.getValue().equals(null) && !targetSchool.getText().equals(null) && !date.getValue().equals(null)
+    			&& !firstSemester.getValue().equals(null) && !firstSemesterYear.getText().equals(null) && addCourses.getCheckModel().getItemCount() > 0
+    			&& perCharsBox.getCheckModel().getItemCount() > 0 && acaChars.getCheckModel().getItemCount() > 0){
+    		
+    	File toDelete = new File("src/resources/recs/" + CommonLibrary.recTitle);
+    	toDelete.delete();
     	
     	Main main = new Main();
     	new PasswordModel();
@@ -174,6 +212,12 @@ public class CreateRecommendationController implements Initializable {
     		
     		String url = "jdbc:sqlite:src/database/recommendation.db";
     		Connection conn = DriverManager.getConnection(url);
+    		
+    		String deleteQuery = "DELETE FROM Recommendation WHERE LastName = ?";
+    		PreparedStatement deleteSt = conn.prepareStatement(deleteQuery);
+    		deleteSt.setString(1, CommonLibrary.recTitle);
+    		deleteSt.execute();
+    		
     		String sql = "INSERT INTO Recommendation (FirstName, LastName, Gender, TargetSchool, CurrentDate, Program, FirstSemester, FirstYear, OtherCourses, LetterGrade, PersonalCharacteristics, AcademicCharacteristics) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     		PreparedStatement st = conn.prepareStatement(sql);
     		st.setString(1, firstName.getText());
@@ -201,13 +245,14 @@ public class CreateRecommendationController implements Initializable {
     	
     	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
+    }
 
     /**
 	 * Adds information to the database
 	 * @param URL, ResourceBundle
 	 */
-    /*
-	@Override
+	@Override	
+	/*
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		recommendationModel = new RecommendationModel();
@@ -220,13 +265,11 @@ public class CreateRecommendationController implements Initializable {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		*/
+	
+    public void initialize(URL location, ResourceBundle resources) {
 		
-    	
-	}
-	*/
-	
-	
-	public void initialize(URL location, ResourceBundle resources) {
+		
     	gender.getItems().addAll(genderList);
     	program.getItems().addAll(programList);
     	firstSemester.getItems().addAll(semesterList);
@@ -261,6 +304,43 @@ public class CreateRecommendationController implements Initializable {
     	acaChars.getItems().addAll(acadChars);
     	addCourses.getItems().addAll(courses);
     	
+		try {
+			RecommendationModel recMod = new RecommendationModel();
+			ArrayList<String> recVals = recMod.getRecommendation(CommonLibrary.recTitle);
+			firstName.setText(recVals.get(0));
+			lastName.setText(recVals.get(1));
+			gender.setValue(recVals.get(2));
+			targetSchool.setText(recVals.get(3));
+			program.setValue(recVals.get(5));
+			firstSemester.setValue(recVals.get(6));
+			firstSemesterYear.setText(recVals.get(7));
+			for(int i = 0; i < courses.size(); i++) {
+				if(recVals.get(8).contains(courses.get(i)))
+				addCourses.getCheckModel().check(i);
+			}
+			addCourseYears.setText(recVals.get(9));
+			for(int i = 0; i < perChars.size(); i++) {
+				if(recVals.get(10).contains(perChars.get(i)))
+				perCharsBox.getCheckModel().check(i);
+			}
+			for(int i = 0; i < acadChars.size(); i++) {
+				if(recVals.get(11).contains(acadChars.get(i)))
+				acaChars.getCheckModel().check(i);
+			}
+			
+			
+			String dateString = recVals.get(4);
+			LocalDate temp = LocalDate.parse(dateString);
+			date.setValue(temp);
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     	
 	}
+
 }

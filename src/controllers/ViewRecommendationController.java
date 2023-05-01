@@ -32,8 +32,7 @@ public class ViewRecommendationController implements Initializable{
     
     @FXML
     void openEditMenu(ActionEvent event) throws IOException {
-    	main.switchScene("/controllers/fxml/HomePage.fxml");
-    	
+    	main.switchScene("/controllers/fxml/EditRecommendation.fxml");
     }
 
     @FXML
@@ -41,7 +40,6 @@ public class ViewRecommendationController implements Initializable{
     	main.switchScene("/controllers/fxml/HomePage.fxml");
 	}
     
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
 		String fileName = CommonLibrary.recTitle;

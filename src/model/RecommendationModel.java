@@ -16,16 +16,6 @@ public class RecommendationModel {
 	private DbSqlite dal = DbSqlite.getInstance();
 	private ArrayList<String> recommendationData = new ArrayList<>();
 	
-	private String firstName;
-	private String lastName;
-	private String gender;
-	private String targetSchool;
-	private String dateString;
-	private String firstSemester;
-	private String firstSemesterYear;
-	private String course;
-	private String courseYear;
-	
 	private ObservableList<String> personalChars = FXCollections.observableArrayList();
 	private ObservableList<String> academicChars = FXCollections.observableArrayList();
 	
@@ -37,27 +27,9 @@ public class RecommendationModel {
 		 dal = DbSqlite.getInstance();
 	}
 	
-	public ArrayList<String> getRecommendation() throws SQLException {
+	public ArrayList<String> getRecommendation(String columnVal) throws SQLException {
 		
-		firstName = getRecommendationData(dal.getConnection(), "First Name", "Recommendation").get(0);
-		lastName = getRecommendationData(dal.getConnection(), "Last Name", "Recommendation").get(0);
-		gender = getRecommendationData(dal.getConnection(), "Gender", "Recommendation").get(0);
-		targetSchool = getRecommendationData(dal.getConnection(), "TargetSchool", "Recommendation").get(0);
-		dateString = getRecommendationData(dal.getConnection(), "Date", "Recommendation").get(0);
-		firstSemester = getRecommendationData(dal.getConnection(), "FirstSemester", "Recommendation").get(0);
-		firstSemesterYear = getRecommendationData(dal.getConnection(), "FirstSemesterYear", "Recommendation").get(0);
-		course = getRecommendationData(dal.getConnection(), "Course", "Recommendation").get(0);
-		courseYear = getRecommendationData(dal.getConnection(), "CourseYear", "Recommendation").get(0);
-		
-		recommendationData.add(firstName);
-		recommendationData.add(lastName);
-		recommendationData.add(gender);
-		recommendationData.add(targetSchool);
-		recommendationData.add(dateString);
-		recommendationData.add(firstSemester);
-		recommendationData.add(firstSemesterYear);
-		recommendationData.add(course);
-		recommendationData.add(courseYear);
+		recommendationData.addAll(getRecommendationData(dal.getConnection(), columnVal));
 		
 		return recommendationData;
 	}
@@ -115,7 +87,7 @@ public class RecommendationModel {
 		ArrayList<String> dataValues = new ArrayList<>();
 		String data = "";
 		String select = "SELECT ";
-		select = select + column + "FROM ";
+		select = select + column + " FROM ";
 		select = select + table;
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery(select);
@@ -126,6 +98,34 @@ public class RecommendationModel {
 		}
 		
 		return dataValues;
+		
+	}
+	private ArrayList<String> getRecommendationData(Connection conn, String columnVal) throws SQLException
+	{
+		ArrayList<String> dataValues = new ArrayList<>();
+		String select = "SELECT * FROM Recommendation WHERE LastName=?";
+		PreparedStatement stmt = conn.prepareStatement(select);
+		stmt.setString(1, columnVal);
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			dataValues.add(rs.getString("FirstName"));
+			dataValues.add(rs.getString("LastName"));
+			dataValues.add(rs.getString("Gender"));
+			dataValues.add(rs.getString("TargetSchool"));
+			dataValues.add(rs.getString("CurrentDate"));
+			dataValues.add(rs.getString("Program"));
+			dataValues.add(rs.getString("FirstSemester"));
+			dataValues.add(rs.getString("FirstYear"));
+			dataValues.add(rs.getString("OtherCourses"));
+			dataValues.add(rs.getString("LetterGrade"));
+			dataValues.add(rs.getString("PersonalCharacteristics"));
+			dataValues.add(rs.getString("AcademicCharacteristics"));
+			
+		}
+
+		return dataValues;
+		
 		
 	}
 
