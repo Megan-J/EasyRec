@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.File;
@@ -69,6 +70,9 @@ public class CreateRecommendationController implements Initializable {
     @FXML
     protected CheckComboBox<String> acaChars;
     
+    @FXML 
+    protected Label errorLabel;
+    
     Main main = new Main();
     
     /**
@@ -90,7 +94,12 @@ public class CreateRecommendationController implements Initializable {
 	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException, SQLException{
-    	
+    	if(!firstName.getText().equals("") && !lastName.getText().equals("") && !gender.getValue().equals("")
+    			&& !program.getValue().equals("") && !targetSchool.getText().equals("") && !date.getValue().equals("")
+    			&& !firstSemester.getValue().equals("") && !firstSemesterYear.getText().equals("") && addCourses.getCheckModel().getItemCount() > 0
+    			&& perCharsBox.getCheckModel().getItemCount() > 0 && acaChars.getCheckModel().getItemCount() > 0){
+    		
+    
     	Main main = new Main();
     	new PasswordModel();
 
@@ -142,27 +151,75 @@ public class CreateRecommendationController implements Initializable {
 		System.out.println(created);
 		FileWriter recWriter = new FileWriter("src/resources/recs/" + lastName.getText());
 		
+		String gradesArr[] = addCourseYears.getText().split(",");
+		String coursesArr[] = courses.split(",");
+		
+		String temp = "I first met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + " when " + pronoun.toLowerCase() + " earned ";
+		for(int i = 0; i < coursesArr.length - 2; i++)
+		{
+			temp += "a " + gradesArr[i] + " from my " + coursesArr[i]
+					+ ", ";
+		}
+		temp += "and a " + gradesArr[coursesArr.length-2] + " from my " + coursesArr[coursesArr.length-2] + ".";
+		
+		
+		
+		String academicsArr[] = acadChars.split(",");
+		String academics = "";
+		if(academicsArr.length > 2) {
+			for(int i = 0; i < academicsArr.length - 2; i++)
+			{
+				academics += academicsArr[i] + ",";
+			}
+			
+			academics += " and" + academicsArr[academicsArr.length-2];
+		}
+		else
+		{
+			academics = academicsArr[0];
+		}
+		
+		String personalsArr[] = perChars.split(",");
+		String personals = "";
+		if (personalsArr.length > 2) {
+			for(int i = 0; i < academicsArr.length - 2; i++)
+			{
+				personals += personalsArr[i] + ",";
+			}
+			
+			personals += " and" + personalsArr[personalsArr.length-2];
+		}
+		else
+		{
+			personals = personalsArr[0];
+		}
 		recWriter.write(
 				
+				
 				"Letter of Recommendation\n\n"
-				+ "For: " + firstName.getText() + 
+				
+				+ "For: " + firstName.getText() + " " + lastName.getText() +
+				
 				"\n\nDate: " + dateString +
+				
 				"\n\nTo: Graduate Admissions Committee "
+				
 				+ "\n\nI am writing this letter to recommend my former student " + firstName.getText() + " " + lastName.getText() +
-				" who is applying for the " + program.getValue() + " in your school. "
-				+ "\n\nI met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + 
-				" when " + pronoun.toLowerCase() + " enrolled in my " + courses + " course.\n\n" +
-				firstName.getText() + " earned an A from this tough course, and this shows how knowledgeable and "
-				+ "hard working " + pronoun.toLowerCase() + " is.\n\n"
 				
-				+ pronoun + " also earned " + " from my " + "course.\n\n" 
+				" who is applying for the " + program.getValue() + " in your school. \n\n"
 				
-				+ "Furthermore, I Noticed from the term project result, " + pronoun.toLowerCase() + "developed leadership, time management, and problem-solving skills."
-				+ pronoun.toLowerCase() + "worked effectively with the team members and delegated tasks appropriately. They were able to deliver a successful project in a timely fashion." 
+				+ temp + "\n\n"
 				
-				+ "I believe that " + firstName.getText() + "has the capacity to excel at higher education program and this is my pleasure to highly recommend him. \n"
+				+ firstName.getText() + " " + academics + ". \n\n"
 				
-				+ "Please do not hesitate to contact me with further questions.\n\n\n\n"
+				+ pronoun + " was always " + personals + ". \n\n"
+				
+				+ "Furthermore, I noticed from the term project result, " + pronoun.toLowerCase() + " developed leadership, time management, and problem-solving skills.\n"
+				+ pronoun + " worked effectively with the team members and delegated tasks appropriately. " + pronoun + " was able to deliver a successful project in a timely fashion.\n" 
+				
+				+ "I believe that " + firstName.getText() + " has the capacity to excel at higher education program and this is my pleasure to highly recommend him. \n\n"
+				
+				+ "Please do not hesitate to contact me with further questions.\n\n\n"
 				
 				
 				+ "Very Respectfully,\n\n"
@@ -172,6 +229,8 @@ public class CreateRecommendationController implements Initializable {
 				+ profTitle + "\n"
 				
 				+ profDep + "\n"
+				
+				+profEmail + "\n"
 				
 				+ profPhone + "\n"
 				);
@@ -210,6 +269,10 @@ public class CreateRecommendationController implements Initializable {
     	}
     	
     	main.switchScene("/controllers/fxml/HomePage.fxml");
+    }
+    	else {
+    		errorLabel.setOpacity(1);
+    	}
     }
 
     /**

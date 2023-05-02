@@ -111,6 +111,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Label fx:id="errorLabel" layoutX="483.0" layoutY="252.0" opacity="0.0" text="Please complete every field" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

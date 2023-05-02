@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,6 +28,7 @@ public class HomePageController implements Initializable{
 
     @FXML
     protected ListView<String> searchList;
+    
 
     Main main = new Main();
     
@@ -97,6 +99,15 @@ public class HomePageController implements Initializable{
 	 */
 	public void switchToResetPassword(ActionEvent event) throws IOException{
 		main.switchScene("/controllers/fxml/ResetPassword.fxml");
+		
+ 	}
+	/**
+	 * Closes the Program
+	 * @param event
+	 * @throws IOException
+	 */
+	public void closeProgram(ActionEvent event) throws IOException{
+		Platform.exit();
 		
  	}
 

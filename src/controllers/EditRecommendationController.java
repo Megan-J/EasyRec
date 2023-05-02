@@ -11,7 +11,8 @@ import application.Main;
 
 import java.sql.*;
 import java.time.LocalDate;
-import model.PasswordModel; 
+import model.PasswordModel;
+import model.ProfileModel;
 import model.RecommendationModel;
 
 import javafx.collections.FXCollections;
@@ -22,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import java.io.File;
@@ -29,7 +31,8 @@ import java.io.FileWriter;
 
 public class EditRecommendationController implements Initializable {
 	
-	
+
+	private ProfileModel profileModel = new ProfileModel();
 	
 	private String[] genderList = {"Male", "Female", "Other"};
 	private String[] programList = {"Master of Science", "Master of Business Administration", "Doctor of Philosophy"};
@@ -77,6 +80,9 @@ public class EditRecommendationController implements Initializable {
     @FXML
     protected Button deleteRec;
     
+    @FXML 
+    protected Label errorLabel;
+    
     Main main = new Main();
     
     /**
@@ -123,16 +129,13 @@ public class EditRecommendationController implements Initializable {
 	 * @throws IOException
 	 */
     @FXML
-    void submitRecommendation(ActionEvent event) throws IOException{
-    	
-    	if(!firstName.getText().equals(null) && !lastName.getText().equals(null) && !gender.getValue().equals(null)
-    			&& !program.getValue().equals(null) && !targetSchool.getText().equals(null) && !date.getValue().equals(null)
-    			&& !firstSemester.getValue().equals(null) && !firstSemesterYear.getText().equals(null) && addCourses.getCheckModel().getItemCount() > 0
+    void submitRecommendation(ActionEvent event) throws IOException, SQLException{
+    	if(!firstName.getText().equals("") && !lastName.getText().equals("") && !gender.getValue().equals("")
+    			&& !program.getValue().equals("") && !targetSchool.getText().equals("") && !date.getValue().equals("")
+    			&& !firstSemester.getValue().equals("") && !firstSemesterYear.getText().equals("") && addCourses.getCheckModel().getItemCount() > 0
     			&& perCharsBox.getCheckModel().getItemCount() > 0 && acaChars.getCheckModel().getItemCount() > 0){
     		
-    	File toDelete = new File("src/resources/recs/" + CommonLibrary.recTitle);
-    	toDelete.delete();
-    	
+    
     	Main main = new Main();
     	new PasswordModel();
 
@@ -154,6 +157,12 @@ public class EditRecommendationController implements Initializable {
 			pronoun = "They";
 		}
 		
+		ArrayList<String> profileData = profileModel.getProfile();
+		String profName = profileData.get(0);
+		String profTitle = profileData.get(1);
+		String profDep = profileData.get(2);
+		String profEmail = profileData.get(3);
+		String profPhone = profileData.get(4);
 		
 		String courses = "";
 		for(String x : addCourses.getCheckModel().getCheckedItems())
@@ -178,30 +187,88 @@ public class EditRecommendationController implements Initializable {
 		System.out.println(created);
 		FileWriter recWriter = new FileWriter("src/resources/recs/" + lastName.getText());
 		
+		String gradesArr[] = addCourseYears.getText().split(",");
+		String coursesArr[] = courses.split(",");
+
+		String temp = "I first met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + " when " + pronoun.toLowerCase() + " earned ";
+		for(int i = 0; i < coursesArr.length - 2; i++)
+		{
+			temp += "a " + gradesArr[i] + "from my " + coursesArr[i]
+					+ ", ";
+		}
+		temp += "and a " + gradesArr[coursesArr.length-2] + " from my " + coursesArr[coursesArr.length-2] + ".";
+		
+		
+		
+		String academicsArr[] = acadChars.split(",");
+		String academics = "";
+		if(academicsArr.length > 1) {
+			for(int i = 0; i < academicsArr.length - 2; i++)
+			{
+				academics += academicsArr[i] + ",";
+			}
+			
+			academics += " and" + academicsArr[academicsArr.length-2];
+		}
+		else
+		{
+			academics = academicsArr[0];
+		}
+		
+		String personalsArr[] = perChars.split(",");
+		String personals = "";
+		if (personalsArr.length > 1) {
+			for(int i = 0; i < academicsArr.length - 2; i++)
+			{
+				personals += personalsArr[i] + ",";
+			}
+			
+			personals += " and" + personalsArr[personalsArr.length-2];
+		}
+		else
+		{
+			personals = personalsArr[0];
+		}
 		recWriter.write(
 				
+				
 				"Letter of Recommendation\n\n"
-				+ "For: " + firstName.getText() + 
+				
+				+ "For: " + firstName.getText() + " " + lastName.getText() +
+				
 				"\n\nDate: " + dateString +
+				
 				"\n\nTo: Graduate Admissions Committee "
+				
 				+ "\n\nI am writing this letter to recommend my former student " + firstName.getText() + " " + lastName.getText() +
-				" who is applying for the " + program.getValue() + " in your school. "
-				+ "\n\nI met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + 
-				" when " + pronoun.toLowerCase() + " enrolled in my " + courses + " course.\n\n" +
-				firstName.getText() + " earned an A from this tough course, and this shows how knowledgeable and "
-				+ "hard working " + pronoun.toLowerCase() + " is.\n\n"
 				
-				+ pronoun + " also earned " + " from my " + "course.\n\n"
+				" who is applying for the " + program.getValue() + " in your school. \n\n"
 				
-				+ firstName.getText() 
+				+ temp + "\n\n"
 				
+				+ firstName.getText() + " " + academics + ". \n\n"
 				
+				+ pronoun + " was always " + personals + ". \n\n"
 				
-				+ "Please do not hesitate to contact me with further questions.\n\n\n\n"
+				+ "Furthermore, I noticed from the term project result, " + pronoun.toLowerCase() + " developed leadership, time management, and problem-solving skills.\n"
+				+ pronoun + " worked effectively with the team members and delegated tasks appropriately. " + pronoun + " was able to deliver a successful project in a timely fashion.\n" 
+				
+				+ "I believe that " + firstName.getText() + " has the capacity to excel at higher education program and this is my pleasure to highly recommend him. \n\n"
+				
+				+ "Please do not hesitate to contact me with further questions.\n\n\n"
+				
 				
 				+ "Very Respectfully,\n\n"
 	
+				+ profName + "\n\n"
 				
+				+ profTitle + "\n"
+				
+				+ profDep + "\n"
+				
+				+profEmail + "\n"
+				
+				+ profPhone + "\n"
 				);
 				
 		
@@ -212,12 +279,6 @@ public class EditRecommendationController implements Initializable {
     		
     		String url = "jdbc:sqlite:src/database/recommendation.db";
     		Connection conn = DriverManager.getConnection(url);
-    		
-    		String deleteQuery = "DELETE FROM Recommendation WHERE LastName = ?";
-    		PreparedStatement deleteSt = conn.prepareStatement(deleteQuery);
-    		deleteSt.setString(1, CommonLibrary.recTitle);
-    		deleteSt.execute();
-    		
     		String sql = "INSERT INTO Recommendation (FirstName, LastName, Gender, TargetSchool, CurrentDate, Program, FirstSemester, FirstYear, OtherCourses, LetterGrade, PersonalCharacteristics, AcademicCharacteristics) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     		PreparedStatement st = conn.prepareStatement(sql);
     		st.setString(1, firstName.getText());
@@ -245,7 +306,10 @@ public class EditRecommendationController implements Initializable {
     	
     	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
-    }
+    	else {
+    		errorLabel.setOpacity(1);
+    	}
+        }
 
     /**
 	 * Adds information to the database
