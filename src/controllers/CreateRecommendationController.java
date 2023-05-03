@@ -154,7 +154,9 @@ public class CreateRecommendationController implements Initializable {
 		String gradesArr[] = addCourseYears.getText().split(",");
 		String coursesArr[] = courses.split(",");
 		
-		String temp = "I first met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + " when " + pronoun.toLowerCase() + " earned ";
+		String temp = "I first met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + 
+		firstSemesterYear.getText() + " when " + pronoun.toLowerCase() + " earned ";
+		
 		for(int i = 0; i < coursesArr.length - 2; i++)
 		{
 			temp += "a " + gradesArr[i] + " from my " + coursesArr[i]
@@ -215,7 +217,7 @@ public class CreateRecommendationController implements Initializable {
 				+ pronoun + " was always " + personals + ". \n\n"
 				
 				+ "Furthermore, I noticed from the term project result, " + pronoun.toLowerCase() + " developed leadership, time management, and problem-solving skills.\n"
-				+ pronoun + " worked effectively with the team members and delegated tasks appropriately. " + pronoun + " was able to deliver a successful project in a timely fashion.\n" 
+				+ pronoun + " worked effectively with the team members and delegated tasks appropriately. " + pronoun + " was able to deliver a successful project in a timely fashion.\n\n" 
 				
 				+ "I believe that " + firstName.getText() + " has the capacity to excel at higher education program and this is my pleasure to highly recommend him. \n\n"
 				
@@ -228,9 +230,9 @@ public class CreateRecommendationController implements Initializable {
 				
 				+ profTitle + "\n"
 				
-				+ profDep + "\n"
+				+ profEmail + "\n"
 				
-				+profEmail + "\n"
+				+ profDep+ "\n"
 				
 				+ profPhone + "\n"
 				);

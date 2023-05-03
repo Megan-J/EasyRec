@@ -8,26 +8,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewRecommendationController">
+<VBox maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewRecommendationController">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="500.0">
          <children>
             <Rectangle fill="#5a84a8" height="672.0" layoutY="130.0" smooth="false" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1243.0" />
-            <Rectangle fill="#8dbfeb" height="86.0" layoutX="-46.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1289.0" />
-            <Button fx:id="returnToEdit" layoutX="344.0" layoutY="143.0" mnemonicParsing="false" onAction="#openEditMenu" prefHeight="48.0" prefWidth="225.0" text="Edit Recommendation">
-               <font>
-                  <Font size="17.0" />
-               </font></Button>
-            <Button fx:id="saveRec" contentDisplay="CENTER" layoutX="643.0" layoutY="142.0" mnemonicParsing="false" onAction="#saveRec" prefHeight="48.0" prefWidth="225.0" text="Save">
+            <Button fx:id="returnToEdit" layoutX="280.0" layoutY="710.0" mnemonicParsing="false" onAction="#openEditMenu" prefHeight="50.0" prefWidth="273.0" text="Edit Recommendation">
                <font>
                   <Font name="Avenir Book" size="23.0" />
                </font></Button>
-            <Text layoutX="363.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Recommendation" textAlignment="CENTER" wrappingWidth="516.7733306884766">
+            <Button fx:id="saveRec" contentDisplay="CENTER" layoutX="661.0" layoutY="709.0" mnemonicParsing="false" onAction="#saveRec" prefHeight="48.0" prefWidth="225.0" text="Save">
                <font>
-                  <Font name="Futura Medium" size="46.0" />
+                  <Font name="Avenir Book" size="23.0" />
+               </font></Button>
+            <Text fill="WHITE" layoutX="363.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="View Recommendation" textAlignment="CENTER" wrappingWidth="516.7733306884766">
+               <font>
+                  <Font name="Avenir Book" size="46.0" />
                </font>
             </Text>
-            <TextArea fx:id="textBox" layoutX="35.0" layoutY="266.0" prefHeight="496.0" prefWidth="1171.0" />
+            <TextArea fx:id="textBox" layoutX="31.0" layoutY="248.0" prefHeight="428.0" prefWidth="1179.0" />
+            <Text layoutX="491.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EasyRec">
+               <font>
+                  <Font name="Futura Medium" size="65.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
