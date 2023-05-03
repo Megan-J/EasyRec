@@ -34,9 +34,7 @@ public class EditRecommendationController implements Initializable {
 
 	private ProfileModel profileModel = new ProfileModel();
 	
-	private String[] genderList = {"Male", "Female", "Other"};
-	private String[] programList = {"Master of Science", "Master of Business Administration", "Doctor of Philosophy"};
-	private String[] semesterList = {"Spring", "Fall", "Summer"};
+	private RecommendationModel recommendationModel = new RecommendationModel();
 
     @FXML
     protected Button submit;
@@ -334,73 +332,19 @@ public class EditRecommendationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 		
 		
-    	gender.getItems().addAll(genderList);
-    	program.getItems().addAll(programList);
-    	firstSemester.getItems().addAll(semesterList);
-    	
-    	final ObservableList<String> acadChars = FXCollections.observableArrayList();
-		final ObservableList<String> perChars = FXCollections.observableArrayList();
-		final ObservableList<String> courses = FXCollections.observableArrayList();
-
-    	
-    	acadChars.add("submitted well-written assignments");
-    	acadChars.add("participated in all of my class activities");
-    	acadChars.add("worked hard");
-    	acadChars.add("was very well prepared for every exam and assignment");
-    	acadChars.add("picked up new skills very quickly");
-    	acadChars.add("was able to excel academically at the top of my class");
-    	
-    	perChars.add("very passionate");
-    	perChars.add("very enthusiastic");
-    	perChars.add("punctual");
-    	perChars.add("attentive");
-    	perChars.add("polite");
-    	
-    	courses.add("CS151: Object-Oriented Design");
-    	courses.add("CS166: Information Security");
-    	courses.add("CS154: Theory of Computation");
-    	courses.add("CS160: Software Engineering");
-    	courses.add("CS256: Cryptography");
-    	courses.add("CS146: Data Structures and Algorithms");
-    	courses.add("CS152: Programming Language Paradigm");
-
-    	perCharsBox.getItems().addAll(perChars);
-    	acaChars.getItems().addAll(acadChars);
-    	addCourses.getItems().addAll(courses);
-    	
+		recommendationModel = new RecommendationModel();
+		
 		try {
-			RecommendationModel recMod = new RecommendationModel();
-			ArrayList<String> recVals = recMod.getRecommendation(CommonLibrary.recTitle);
-			firstName.setText(recVals.get(0));
-			lastName.setText(recVals.get(1));
-			gender.setValue(recVals.get(2));
-			targetSchool.setText(recVals.get(3));
-			program.setValue(recVals.get(5));
-			firstSemester.setValue(recVals.get(6));
-			firstSemesterYear.setText(recVals.get(7));
-			for(int i = 0; i < courses.size(); i++) {
-				if(recVals.get(8).contains(courses.get(i)))
-				addCourses.getCheckModel().check(i);
-			}
-			addCourseYears.setText(recVals.get(9));
-			for(int i = 0; i < perChars.size(); i++) {
-				if(recVals.get(10).contains(perChars.get(i)))
-				perCharsBox.getCheckModel().check(i);
-			}
-			for(int i = 0; i < acadChars.size(); i++) {
-				if(recVals.get(11).contains(acadChars.get(i)))
-				acaChars.getCheckModel().check(i);
-			}
+			gender.getItems().addAll(recommendationModel.getGenders());
+			program.getItems().addAll(recommendationModel.getPrograms());
+			firstSemester.getItems().addAll(recommendationModel.getSemesters());
 			
+	    	perCharsBox.getItems().addAll(recommendationModel.getPersonalChars());
+	    	acaChars.getItems().addAll(recommendationModel.getAcademicChars());
+	    	addCourses.getItems().addAll(recommendationModel.getCourses());
 			
-			String dateString = recVals.get(4);
-			LocalDate temp = LocalDate.parse(dateString);
-			date.setValue(temp);
-			
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		}
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 
