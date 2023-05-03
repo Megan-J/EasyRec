@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.controlsfx.control.CheckComboBox?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditRecommendationController">
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditRecommendationController">
    <children>
       <AnchorPane maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0">
          <children>
@@ -22,11 +22,11 @@
                   <Font name="Avenir Book" size="48.0" />
                </font>
             </Label>
-            <Button layoutX="435.0" layoutY="703.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="39.0" prefWidth="102.0" text="Cancel">
+            <Button layoutX="392.0" layoutY="683.0" mnemonicParsing="false" onAction="#cancelBtnPressed" prefHeight="39.0" prefWidth="102.0" text="Cancel">
                <font>
                   <Font name="Avenir Book" size="18.0" />
                </font></Button>
-            <Button fx:id="submit" layoutX="716.0" layoutY="703.0" mnemonicParsing="false" onAction="#submitRecommendation" text="Submit">
+            <Button fx:id="submit" layoutX="564.0" layoutY="682.0" mnemonicParsing="false" onAction="#submitRecommendation" text="Submit">
                <font>
                   <Font name="Avenir Book" size="18.0" />
                </font></Button>
@@ -106,9 +106,9 @@
                   <Font name="Futura Medium" size="58.0" />
                </font>
             </Text>
-            <Button fx:id="deleteRec" layoutX="933.0" layoutY="703.0" mnemonicParsing="false" onAction="#executeDeleteRec" prefHeight="39.0" prefWidth="261.0" text="Delete Recommendation">
+            <Button fx:id="deleteRec" layoutX="715.0" layoutY="682.0" mnemonicParsing="false" onAction="#executeDeleteRec" prefHeight="39.0" prefWidth="261.0" text="Delete Recommendation">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Avenir Book" size="18.0" />
                </font>
             </Button>
             <Label fx:id="errorLabel" layoutX="483.0" layoutY="252.0" opacity="0.0" text="Please complete every field" textFill="RED">

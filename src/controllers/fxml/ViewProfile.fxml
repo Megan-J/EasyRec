@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewProfileController">
+<VBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewProfileController">
    <children>
       <AnchorPane maxHeight="800.0" maxWidth="1240.0" minHeight="800.0" minWidth="1240.0" prefHeight="800.0" prefWidth="1240.0">
          <children>
@@ -65,13 +65,34 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="31.0" layoutX="639.0" layoutY="344.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="31.0" layoutX="642.0" layoutY="433.0" stroke="BLACK" strokeType="INSIDE" width="391.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="121.0" layoutX="642.0" layoutY="517.0" stroke="BLACK" strokeType="INSIDE" width="382.0" />
-            <Text fx:id="nameField" layoutX="178.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="titleField" layoutX="178.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="emailField" layoutX="178.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="phoneField" layoutX="178.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="schoolDepField" layoutX="650.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-            <Text fx:id="semestersField" layoutX="650.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" />
-            <Text fx:id="coursesField" layoutX="650.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" wrappingWidth="371.0" />
+            <Text fx:id="nameField" layoutX="178.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
+            <Text fx:id="titleField" layoutX="178.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
+            <Text fx:id="emailField" layoutX="178.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
+            <Text fx:id="phoneField" layoutX="178.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
+            <Text fx:id="schoolDepField" layoutX="650.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
+            <Text fx:id="semestersField" layoutX="650.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
+            <Text fx:id="coursesField" layoutX="650.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="?" wrappingWidth="371.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></Text>
          </children>
       </AnchorPane>
    </children>

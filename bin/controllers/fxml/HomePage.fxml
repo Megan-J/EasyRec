@@ -36,7 +36,10 @@
                   <Font name="Futura Medium" size="46.0" />
                </font>
             </Text>
-            <TextField fx:id="searchField" layoutX="55.0" layoutY="244.0" prefHeight="48.0" prefWidth="911.0" />
+            <TextField fx:id="searchField" layoutX="55.0" layoutY="244.0" prefHeight="48.0" prefWidth="911.0">
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font></TextField>
             <Button fx:id="searchButton" layoutX="973.0" layoutY="244.0" mnemonicParsing="false" onAction="#searchRecs" prefHeight="48.0" prefWidth="225.0" text="Search">
                <font>
                   <Font name="Avenir Book" size="18.0" />

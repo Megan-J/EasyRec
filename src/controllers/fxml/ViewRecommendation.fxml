@@ -26,7 +26,10 @@
                   <Font name="Avenir Book" size="46.0" />
                </font>
             </Text>
-            <TextArea fx:id="textBox" layoutX="31.0" layoutY="248.0" prefHeight="428.0" prefWidth="1179.0" />
+            <TextArea fx:id="textBox" layoutX="31.0" layoutY="248.0" prefHeight="428.0" prefWidth="1179.0">
+               <font>
+                  <Font name="Helvetica Neue" size="14.0" />
+               </font></TextArea>
             <Text layoutX="491.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EasyRec">
                <font>
                   <Font name="Futura Medium" size="65.0" />
