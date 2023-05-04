@@ -19,6 +19,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -31,6 +32,8 @@ public class CreateRecommendationController implements Initializable {
 	
 	private RecommendationModel recommendationModel;
 	private ProfileModel profileModel = new ProfileModel();
+	private String[] coursesList = {"CS151: Object-Oriented Design", "CS166: Information Security", "CS154: Theory of Computation", "CS160: Software Engineering", "CS256: Cryptography", "CS146: Data Structures and Algorithms", "CS152: Programming Language Paradigm"};
+
 	@FXML
     protected Button submit;
 
@@ -73,6 +76,13 @@ public class CreateRecommendationController implements Initializable {
     @FXML 
     protected Label errorLabel;
     
+
+    @FXML
+    protected TextField firstCourseGrade;
+    
+    @FXML
+    protected ChoiceBox<String> firstCourseTitle;
+    
     Main main = new Main();
     
     /**
@@ -94,10 +104,12 @@ public class CreateRecommendationController implements Initializable {
 	 */
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException, SQLException{
+    try {
     	if(!firstName.getText().equals("") && !lastName.getText().equals("") && !gender.getValue().equals("")
-    			&& !program.getValue().equals("") && !targetSchool.getText().equals("") && !date.getValue().equals("")
-    			&& !firstSemester.getValue().equals("") && !firstSemesterYear.getText().equals("") && addCourses.getCheckModel().getItemCount() > 0
-    			&& perCharsBox.getCheckModel().getItemCount() > 0 && acaChars.getCheckModel().getItemCount() > 0){
+    			&& !program.getValue().equals("") && !targetSchool.getText().equals("") && !date.getValue().toString().equals("")
+    			&& !firstSemester.getValue().equals("") && !firstSemesterYear.getText().equals("")
+    			&& perCharsBox.getCheckModel().getItemCount() > 0 && acaChars.getCheckModel().getItemCount() > 0
+    			&& !firstCourseTitle.getValue().equals("") && !firstCourseGrade.getText().equals("")) {
     		
     
     	Main main = new Main();
@@ -153,17 +165,18 @@ public class CreateRecommendationController implements Initializable {
 		
 		String gradesArr[] = addCourseYears.getText().split(",");
 		String coursesArr[] = courses.split(",");
+
+		String temp = "";
 		
-		String temp = "I first met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + 
-		firstSemesterYear.getText() + " when " + pronoun.toLowerCase() + " earned ";
-		
-		for(int i = 0; i < coursesArr.length - 2; i++)
-		{
-			temp += "a " + gradesArr[i] + " from my " + coursesArr[i]
-					+ ", ";
+		if(coursesArr.length > 1) {
+			temp = pronoun + " also earned ";
+			for(int i = 0; i < coursesArr.length - 2; i++)
+			{
+				temp += "a " + gradesArr[i] + " from my " + coursesArr[i]
+						+ ", ";
+			}
+			temp += "and a " + gradesArr[coursesArr.length-2] + " from my " + coursesArr[coursesArr.length-2] + ".\n\n";
 		}
-		temp += "and a " + gradesArr[coursesArr.length-2] + " from my " + coursesArr[coursesArr.length-2] + ".";
-		
 		
 		
 		String academicsArr[] = acadChars.split(",");
@@ -210,7 +223,10 @@ public class CreateRecommendationController implements Initializable {
 				
 				" who is applying for the " + program.getValue() + " in your school. \n\n"
 				
-				+ temp + "\n\n"
+				+ "I met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + " when " + pronoun.toLowerCase() +
+				" enrolled in my " + firstCourseTitle.getValue() + ".\n\n"
+				
+				+ temp
 				
 				+ firstName.getText() + " " + academics + ". \n\n"
 				
@@ -245,7 +261,7 @@ public class CreateRecommendationController implements Initializable {
     		
     		String url = "jdbc:sqlite:src/database/recommendation.db";
     		Connection conn = DriverManager.getConnection(url);
-    		String sql = "INSERT INTO Recommendation (FirstName, LastName, Gender, TargetSchool, CurrentDate, Program, FirstSemester, FirstYear, OtherCourses, LetterGrade, PersonalCharacteristics, AcademicCharacteristics) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    		String sql = "INSERT INTO Recommendation (FirstName, LastName, Gender, TargetSchool, CurrentDate, Program, FirstSemester, FirstYear, OtherCourses, LetterGrade, PersonalCharacteristics, AcademicCharacteristics, FirstCourse, FirstCourseGrade) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     		PreparedStatement st = conn.prepareStatement(sql);
     		st.setString(1, firstName.getText());
     		st.setString(2,  lastName.getText());
@@ -259,6 +275,8 @@ public class CreateRecommendationController implements Initializable {
     		st.setString(10, addCourseYears.getText());
     		st.setString(11, perChars);
     		st.setString(12, acadChars);
+    		st.setString(13, firstCourseTitle.getValue());
+    		st.setString(14, firstCourseGrade.getText());
     		
     		int rowsInserted = st.executeUpdate();
     		if(rowsInserted > 0)
@@ -271,11 +289,19 @@ public class CreateRecommendationController implements Initializable {
     	}
     	
     	main.switchScene("/controllers/fxml/HomePage.fxml");
-    }
-    	else {
+ 
+    	
+    	
+    	}
+    	else
+    	{
     		errorLabel.setOpacity(1);
     	}
     }
+    catch(NullPointerException e) {
+    	errorLabel.setOpacity(1);
+    }
+	}
 
     /**
 	 * Adds information to the database
@@ -291,9 +317,12 @@ public class CreateRecommendationController implements Initializable {
 			program.getItems().addAll(recommendationModel.getPrograms());
 			firstSemester.getItems().addAll(recommendationModel.getSemesters());
 			
+	    	firstCourseTitle.getItems().addAll(coursesList);
+			
 	    	perCharsBox.getItems().addAll(recommendationModel.getPersonalChars());
 	    	acaChars.getItems().addAll(recommendationModel.getAcademicChars());
 	    	addCourses.getItems().addAll(recommendationModel.getCourses());
+	    	
 			
 		}
 		catch (SQLException e) {

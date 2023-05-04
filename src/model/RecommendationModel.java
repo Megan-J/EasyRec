@@ -156,6 +156,9 @@ public class RecommendationModel {
 			dataValues.add(rs.getString("LetterGrade"));
 			dataValues.add(rs.getString("PersonalCharacteristics"));
 			dataValues.add(rs.getString("AcademicCharacteristics"));
+			dataValues.add(rs.getString("FirstCourse"));
+			dataValues.add(rs.getString("FirstCourseGrade"));
+			
 			
 		}
 

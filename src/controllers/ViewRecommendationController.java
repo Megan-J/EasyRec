@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -34,9 +35,17 @@ public class ViewRecommendationController implements Initializable{
     void openEditMenu(ActionEvent event) throws IOException {
     	main.switchScene("/controllers/fxml/EditRecommendation.fxml");
     }
+    
+    @FXML
+    void cancelButton(ActionEvent event) throws IOException {
+    	main.switchScene("/controllers/fxml/HomePage.fxml");
+    }
 
     @FXML
     void saveRec(ActionEvent event) throws IOException {
+    	FileWriter recWriter = new FileWriter("src/resources/recs/" + CommonLibrary.recTitle);
+    	recWriter.write(textBox.getText());
+    	recWriter.close();
     	main.switchScene("/controllers/fxml/HomePage.fxml");
 	}
     
