@@ -127,9 +127,9 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="679.0" layoutY="702.0" mnemonicParsing="false" text="Delete Recommendatoin">
+            <Button layoutX="679.0" layoutY="702.0" mnemonicParsing="false" onAction="#executeDeleteRec" text="Delete Recommendation">
                <font>
-                  <Font size="18.0" />
+                  <Font name="Avenir Book" size="18.0" />
                </font>
             </Button>
          </children>

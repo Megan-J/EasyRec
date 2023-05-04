@@ -172,10 +172,10 @@ public class CreateRecommendationController implements Initializable {
 			temp = pronoun + " also earned ";
 			for(int i = 0; i < coursesArr.length - 2; i++)
 			{
-				temp += "a " + gradesArr[i] + " from my " + coursesArr[i]
-						+ ", ";
+				temp += "a \"" + gradesArr[i] + "\" from my \"" + coursesArr[i]
+						+ "\", ";
 			}
-			temp += "and a " + gradesArr[coursesArr.length-2] + " from my " + coursesArr[coursesArr.length-2] + ".\n\n";
+			temp += "and a \"" + gradesArr[coursesArr.length-2] + "\" from my \"" + coursesArr[coursesArr.length-2] + "\".\n\n";
 		}
 		
 		
@@ -224,7 +224,9 @@ public class CreateRecommendationController implements Initializable {
 				" who is applying for the " + program.getValue() + " in your school. \n\n"
 				
 				+ "I met " + firstName.getText() + " in " + firstSemester.getValue() + " of " + firstSemesterYear.getText() + " when " + pronoun.toLowerCase() +
-				" enrolled in my " + firstCourseTitle.getValue() + ".\n\n"
+				" enrolled in my \"" + firstCourseTitle.getValue() + "\".\n\n"
+				
+				+ firstName.getText() + " earned \"" + firstCourseGrade.getText() + "\" from this tough course, and this shows how knowledgeable and hard worker " + pronoun.toLowerCase() + " is. \n\n"
 				
 				+ temp
 				
