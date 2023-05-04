@@ -105,13 +105,17 @@ public class CreateRecommendationController implements Initializable {
     @FXML
     void submitRecommendation(ActionEvent event) throws IOException, SQLException{
     try {
-    	if(!firstName.getText().equals("") && !lastName.getText().equals("") && !gender.getValue().equals("")
-    			&& !program.getValue().equals("") && !targetSchool.getText().equals("") && !date.getValue().toString().equals("")
-    			&& !firstSemester.getValue().equals("") && !firstSemesterYear.getText().equals("")
-    			&& perCharsBox.getCheckModel().getItemCount() > 0 && acaChars.getCheckModel().getItemCount() > 0
-    			&& !firstCourseTitle.getValue().equals("") && !firstCourseGrade.getText().equals("")) {
+    	if(firstName.getText().equals("") || lastName.getText().equals("") || gender.getValue().equals("")
+    			|| program.getValue().equals("") || targetSchool.getText().equals("") || date.getValue().toString().equals("")
+    			|| firstSemester.getValue().equals("") || firstSemesterYear.getText().equals("")
+    			|| perCharsBox.getCheckModel().getCheckedIndices().size() == 0 || acaChars.getCheckModel().getCheckedIndices().size() == 0
+    			|| firstCourseTitle.getValue().equals("") || firstCourseGrade.getText().equals("")) 
+    	{
+
+        	errorLabel.setOpacity(1);
+        }
     		
-    
+    	else {
     	Main main = new Main();
     	new PasswordModel();
 
@@ -293,17 +297,14 @@ public class CreateRecommendationController implements Initializable {
     	main.switchScene("/controllers/fxml/HomePage.fxml");
  
     	
+    	}
     	
-    	}
-    	else
-    	{
-    		errorLabel.setOpacity(1);
-    	}
     }
     catch(NullPointerException e) {
     	errorLabel.setOpacity(1);
     }
-	}
+    }
+	
 
     /**
 	 * Adds information to the database

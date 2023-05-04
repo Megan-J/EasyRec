@@ -72,10 +72,17 @@ public class ProfileController implements Initializable {
 	 */
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException{
-    	if (!nameField.getText().equals("") && !titleField.getText().equals("") && !schoolDepField.getText().equals("") &&
-        		!emailField.getText().equals("") && !phoneField.getText().equals("") && semestersField.getCheckModel().getItemCount() > 0
-        		&& coursesField.getCheckModel().getItemCount() > 0)
-        	{
+    	if (nameField.getText().equals("") || titleField.getText().equals("") || 
+    			schoolDepField.getText().equals("") ||
+        		emailField.getText().equals("") || phoneField.getText().equals("")||
+        		semestersField.getCheckModel().getCheckedIndices().size() == 0 || 
+        		coursesField.getCheckModel().getCheckedIndices().size() == 0) 
+    	{
+    		System.out.print("Nothing changed");
+    		main.switchScene("/controllers/fxml/ViewProfile.fxml");
+    	}
+    	else
+    	{
     		new PasswordModel();
     	
     		String name = nameField.getText();
@@ -110,11 +117,7 @@ public class ProfileController implements Initializable {
     			System.err.println(e.getMessage());
     		}
     		main.switchScene("/controllers/fxml/ViewProfile.fxml");
-    	}
-    	else
-    	{
-    		System.out.print("Nothing changed");
-    		main.switchScene("/controllers/fxml/ViewProfile.fxml");
+    		
     	}
     }
 
