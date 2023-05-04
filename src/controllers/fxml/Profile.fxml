@@ -81,6 +81,11 @@
                   <Font name="Futura Medium" size="65.0" />
                </font>
             </Label>
+            <Label fx:id="errorMessage" layoutX="498.0" layoutY="270.0" opacity="0.0" text="Please complete all fields" textFill="RED">
+               <font>
+                  <Font name="Avenir Book" size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

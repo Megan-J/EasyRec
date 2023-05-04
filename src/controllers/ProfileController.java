@@ -72,40 +72,50 @@ public class ProfileController implements Initializable {
 	 */
     @FXML
     void saveButtonPressed(ActionEvent event) throws IOException{
+    	if (!nameField.getText().equals("") && !titleField.getText().equals("") && !schoolDepField.getText().equals("") &&
+        		!emailField.getText().equals("") && !phoneField.getText().equals("") && semestersField.getCheckModel().getItemCount() > 0
+        		&& coursesField.getCheckModel().getItemCount() > 0)
+        	{
+    		new PasswordModel();
     	
-    	new PasswordModel();
-    	
-		String name = nameField.getText();
-		String title = titleField.getText();
-		String school = schoolDepField.getText();
-		String email = emailField.getText();
-		String phone = phoneField.getText();
+    		String name = nameField.getText();
+    		String title = titleField.getText();
+    		String school = schoolDepField.getText();
+    		String email = emailField.getText();
+    		String phone = phoneField.getText();
 
-		String semesters = "";
-		ObservableList<String> semesterList = semestersField.getCheckModel().getCheckedItems();
-		for (int i = 0; i < semesterList.size()- 1; i++)
-		{
-			String checked = semesterList.get(i);
-			semesters = semesters + checked + ", ";
-		}
-		semesters = semesters + semesterList.get(semesterList.size()-1);
+    		String semesters = "";
+    		ObservableList<String> semesterList = semestersField.getCheckModel().getCheckedItems();
+    		for (int i = 0; i < semesterList.size()- 1; i++)
+    		{
+    			String checked = semesterList.get(i);
+    			semesters = semesters + checked + ", ";
+    		}
+    		semesters = semesters + semesterList.get(semesterList.size()-1);
 		
-		String courses = "";
-		ObservableList<String> courseList = coursesField.getCheckModel().getCheckedItems();
-		for (int i = 0; i < courseList.size() - 1; i++)
-		{
-			String checked = courseList.get(i);
-			courses = courses + checked + ", ";
-		}
-		courses = courses + courseList.get(courseList.size()-1);
-		try {
-			profile.setProfile(name, title, school, email, phone, semesters, courses);
-		}
-		catch(Exception e)
-		{
-			System.err.println(e.getMessage());
-		}
-		main.switchScene("/controllers/fxml/ViewProfile.fxml");
+    		String courses = "";
+    		ObservableList<String> courseList = coursesField.getCheckModel().getCheckedItems();
+    		for (int i = 0; i < courseList.size() - 1; i++)
+    		{
+    			String checked = courseList.get(i);
+    			courses = courses + checked + ", ";
+    		}
+    		courses = courses + courseList.get(courseList.size()-1);
+    		
+    		try {
+    			profile.setProfile(name, title, school, email, phone, semesters, courses);
+    		}
+    		catch(Exception e)
+    		{
+    			System.err.println(e.getMessage());
+    		}
+    		main.switchScene("/controllers/fxml/ViewProfile.fxml");
+    	}
+    	else
+    	{
+    		System.out.print("Nothing changed");
+    		main.switchScene("/controllers/fxml/ViewProfile.fxml");
+    	}
     }
 
     /**
