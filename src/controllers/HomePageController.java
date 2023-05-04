@@ -32,6 +32,11 @@ public class HomePageController implements Initializable{
 
     Main main = new Main();
     
+    /**
+	 * Searches Recommendations
+	 * @param event
+	 * @throws IOException
+	 */
     public void searchRecs(ActionEvent event) throws IOException{
     	File directory = new File ("src/resources/recs");
     	String contents[] = directory.list();
@@ -44,6 +49,11 @@ public class HomePageController implements Initializable{
     	}
     }
     
+    /**
+	 * handles if the mouse is cliked
+	 * @param event
+	 * @throws IOException
+	 */
     public void handleMouseClick(MouseEvent event) throws IOException
     {
     	if(searchList.getSelectionModel().getSelectedItem() != null) {
@@ -55,6 +65,7 @@ public class HomePageController implements Initializable{
     	}
 	
     }
+    
 	/**
 	 * Switches to Scene1
 	 * @param event

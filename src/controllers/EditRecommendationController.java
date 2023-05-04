@@ -270,26 +270,12 @@ public class EditRecommendationController implements Initializable {
     }
     }
 
+
+
     /**
-	 * Adds information to the database
+	 * Initialize drop down values
 	 * @param URL, ResourceBundle
 	 */
-	@Override	
-	/*
-	public void initialize(URL location, ResourceBundle resources) {
-		
-		recommendationModel = new RecommendationModel();
-		
-		try {
-	    	perCharsBox.getItems().addAll(recommendationModel.getPersonalChars());
-	    	acaChars.getItems().addAll(recommendationModel.getAcademicChars());
-			
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		*/
-
     public void initialize(URL location, ResourceBundle resources) {
 
 

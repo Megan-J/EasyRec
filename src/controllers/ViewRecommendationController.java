@@ -1,6 +1,7 @@
 package controllers;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -31,16 +32,31 @@ public class ViewRecommendationController implements Initializable{
     Main main = new Main();
     
     
+    /**
+	 * Opens edit menu
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void openEditMenu(ActionEvent event) throws IOException {
     	main.switchScene("/controllers/fxml/EditRecommendation.fxml");
     }
     
+    /**
+	 * Handle if cancel button is pressed
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void cancelButton(ActionEvent event) throws IOException {
     	main.switchScene("/controllers/fxml/HomePage.fxml");
     }
 
+    /**
+	 * Handle if save button is pressed
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void saveRec(ActionEvent event) throws IOException {
     	FileWriter recWriter = new FileWriter("src/resources/recs/" + CommonLibrary.recTitle);
@@ -49,6 +65,10 @@ public class ViewRecommendationController implements Initializable{
     	main.switchScene("/controllers/fxml/HomePage.fxml");
 	}
     
+    /**
+	 * Initialize by creating a text file
+	 * @param URL, ResourceBundle
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources){
 		String fileName = CommonLibrary.recTitle;

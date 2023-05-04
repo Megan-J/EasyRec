@@ -1,16 +1,14 @@
 package controllers;
 
 import javafx.fxml.FXML;
+
 import javafx.scene.control.PasswordField;
 import model.PasswordModel;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
-
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
-import java.io.FileWriter;
-import java.io.File;
+
 
 import application.Main;
 
@@ -31,6 +29,7 @@ public class ResetPasswordController {
 	private PasswordField currentField;
 	
 	Main main = new Main();
+	
 	/**
 	 * Check if password matches the one on file
 	 * @param event
@@ -61,6 +60,12 @@ public class ResetPasswordController {
 		}
 	}
 	
+	/**
+	 * Switches current page to home page
+	 * @param event
+	 * @throws IOException
+	 * @throws SQLException 
+	 */
 	public void switchToHomePage(ActionEvent event) throws IOException, SQLException {
 		password = new PasswordModel();
 		String p = password.getPassword();
