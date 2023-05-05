@@ -127,9 +127,12 @@ public class HomePageController implements Initializable{
     	File directory = new File ("src/resources/recs");
     	String contents[] = directory.list();
     	searchList.getItems().clear();
-    	for(String i: contents) {
-			searchList.getItems().add(i);
+    	if (contents != null)
+    	{
+    		for(String i: contents) {
+    			searchList.getItems().add(i);
 			
+    		}
     	}
 	}
 }
